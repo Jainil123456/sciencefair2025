@@ -1,0 +1,135 @@
+{
+  "total_alerts": 13,
+  "alerts": [
+    {
+      "location_id": 83,
+      "x": 6.355835028602364,
+      "y": 49.25176938188639,
+      "risk_level": "high",
+      "risk_score": 0.7320187091827393,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 100.0,
+      "recommendation": "High methane concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 10,
+      "x": 2.0584494295802447,
+      "y": 36.77831327192532,
+      "risk_level": "high",
+      "risk_score": 0.7317149639129639,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 83.83323811060762,
+      "recommendation": "High methane concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 77,
+      "x": 7.4044651734090365,
+      "y": 39.30977246667604,
+      "risk_level": "high",
+      "risk_score": 0.730241596698761,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 73.49892332210109,
+      "recommendation": "High methane concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 29,
+      "x": 4.645041271999773,
+      "y": 13.752094414599325,
+      "risk_level": "high",
+      "risk_score": 0.7290261387825012,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.205857049801438,
+      "recommendation": "High nitrogen dioxide concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 132,
+      "x": 11.98653673336828,
+      "y": 37.5582952639944,
+      "risk_level": "high",
+      "risk_score": 0.7195451259613037,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 42.52418427254065,
+      "recommendation": "High ammonia concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 40,
+      "x": 12.203823484477883,
+      "y": 9.310276780589922,
+      "risk_level": "high",
+      "risk_score": 0.7166522145271301,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.252157653976422,
+      "recommendation": "High nitrogen dioxide concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 56,
+      "x": 8.84925020519195,
+      "y": 10.147154286603211,
+      "risk_level": "high",
+      "risk_score": 0.7101773619651794,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.576406378795672,
+      "recommendation": "High nitrogen dioxide concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 109,
+      "x": 7.697990982879299,
+      "y": 9.717649377076853,
+      "risk_level": "high",
+      "risk_score": 0.7101773619651794,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.439206865726583,
+      "recommendation": "High nitrogen dioxide concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 31,
+      "x": 17.052412368729154,
+      "y": 11.347352124058908,
+      "risk_level": "high",
+      "risk_score": 0.708665668964386,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 39.311196277388945,
+      "recommendation": "High ammonia concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 100,
+      "x": 3.142918568673425,
+      "y": 29.444889206958567,
+      "risk_level": "high",
+      "risk_score": 0.7053778767585754,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.663910163452847,
+      "recommendation": "High nitrogen dioxide concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 112,
+      "x": 92.96976523425731,
+      "y": 14.008401523652402,
+      "risk_level": "high",
+      "risk_score": 0.704191267490387,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 82.80301157421218,
+      "recommendation": "High methane concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 58,
+      "x": 4.522728891053807,
+      "y": 0.5061583846218687,
+      "risk_level": "high",
+      "risk_score": 0.7036988139152527,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 50.0,
+      "recommendation": "High ammonia concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 104,
+      "x": 90.7566473926093,
+      "y": 16.94927466860925,
+      "risk_level": "high",
+      "risk_score": 0.7008811235427856,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 93.47006325044964,
+      "recommendation": "High methane concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    }
+  ]
+}

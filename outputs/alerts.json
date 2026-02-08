@@ -1,0 +1,1505 @@
+{
+  "total_alerts": 150,
+  "alerts": [
+    {
+      "location_id": 83,
+      "x": 6.355835028602364,
+      "y": 49.25176938188639,
+      "risk_level": "high",
+      "risk_score": 0.7320187091827393,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 100.0,
+      "recommendation": "High methane concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 10,
+      "x": 2.0584494295802447,
+      "y": 36.77831327192532,
+      "risk_level": "high",
+      "risk_score": 0.7317149639129639,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 83.83323811060762,
+      "recommendation": "High methane concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 77,
+      "x": 7.4044651734090365,
+      "y": 39.30977246667604,
+      "risk_level": "high",
+      "risk_score": 0.730241596698761,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 73.49892332210109,
+      "recommendation": "High methane concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 29,
+      "x": 4.645041271999773,
+      "y": 13.752094414599325,
+      "risk_level": "high",
+      "risk_score": 0.7290261387825012,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.205857049801438,
+      "recommendation": "High nitrogen dioxide concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 132,
+      "x": 11.98653673336828,
+      "y": 37.5582952639944,
+      "risk_level": "high",
+      "risk_score": 0.7195451259613037,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 42.52418427254065,
+      "recommendation": "High ammonia concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 40,
+      "x": 12.203823484477883,
+      "y": 9.310276780589922,
+      "risk_level": "high",
+      "risk_score": 0.7166522145271301,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.252157653976422,
+      "recommendation": "High nitrogen dioxide concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 56,
+      "x": 8.84925020519195,
+      "y": 10.147154286603211,
+      "risk_level": "high",
+      "risk_score": 0.7101773619651794,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.576406378795672,
+      "recommendation": "High nitrogen dioxide concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 109,
+      "x": 7.697990982879299,
+      "y": 9.717649377076853,
+      "risk_level": "high",
+      "risk_score": 0.7101773619651794,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.439206865726583,
+      "recommendation": "High nitrogen dioxide concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 31,
+      "x": 17.052412368729154,
+      "y": 11.347352124058908,
+      "risk_level": "high",
+      "risk_score": 0.708665668964386,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 39.311196277388945,
+      "recommendation": "High ammonia concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 100,
+      "x": 3.142918568673425,
+      "y": 29.444889206958567,
+      "risk_level": "high",
+      "risk_score": 0.7053778767585754,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.663910163452847,
+      "recommendation": "High nitrogen dioxide concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 112,
+      "x": 92.96976523425731,
+      "y": 14.008401523652402,
+      "risk_level": "high",
+      "risk_score": 0.704191267490387,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 82.80301157421218,
+      "recommendation": "High methane concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 58,
+      "x": 4.522728891053807,
+      "y": 0.5061583846218687,
+      "risk_level": "high",
+      "risk_score": 0.7036988139152527,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 50.0,
+      "recommendation": "High ammonia concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 104,
+      "x": 90.7566473926093,
+      "y": 16.94927466860925,
+      "risk_level": "high",
+      "risk_score": 0.7008811235427856,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 93.47006325044964,
+      "recommendation": "High methane concentration detected. Consider soil aeration and reduce fertilizer application. Consult agricultural expert."
+    },
+    {
+      "location_id": 14,
+      "x": 18.182496720710063,
+      "y": 9.02897700544083,
+      "risk_level": "medium",
+      "risk_score": 0.6989350318908691,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.399237052495115,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 140,
+      "x": 96.24472949421113,
+      "y": 3.050024993904943,
+      "risk_level": "medium",
+      "risk_score": 0.6988059282302856,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 92.66344877738746,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 1,
+      "x": 95.07143064099162,
+      "y": 23.95618906669724,
+      "risk_level": "medium",
+      "risk_score": 0.6984582543373108,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 37.76906277975013,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 52,
+      "x": 93.9498941564189,
+      "y": 16.162871409461378,
+      "risk_level": "medium",
+      "risk_score": 0.6981865167617798,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 91.66506593449047,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 72,
+      "x": 0.5522117123602399,
+      "y": 9.367476782809248,
+      "risk_level": "medium",
+      "risk_score": 0.6934106349945068,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.796918926944629,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 21,
+      "x": 13.949386065204184,
+      "y": 1.6587828927856152,
+      "risk_level": "medium",
+      "risk_score": 0.6933437585830688,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 40.06360266987738,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 5,
+      "x": 15.599452033620265,
+      "y": 24.20552715115004,
+      "risk_level": "medium",
+      "risk_score": 0.6921697854995728,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 50.0,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 145,
+      "x": 3.6886947354532795,
+      "y": 52.224326005480435,
+      "risk_level": "medium",
+      "risk_score": 0.6912565231323242,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 100.0,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 66,
+      "x": 14.092422497476264,
+      "y": 32.539969815926774,
+      "risk_level": "medium",
+      "risk_score": 0.6878925561904907,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 50.0,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 37,
+      "x": 9.767211400638388,
+      "y": 55.52008115994623,
+      "risk_level": "medium",
+      "risk_score": 0.6861481666564941,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 100.0,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 55,
+      "x": 92.18742350231169,
+      "y": 0.9197051616629648,
+      "risk_level": "medium",
+      "risk_score": 0.6803639531135559,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 99.03596427715179,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 34,
+      "x": 96.56320330745594,
+      "y": 25.79416277151556,
+      "risk_level": "medium",
+      "risk_score": 0.6717445850372314,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.342779858495421,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 120,
+      "x": 80.74401551640625,
+      "y": 80.93611554785136,
+      "risk_level": "medium",
+      "risk_score": 0.6700176000595093,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 44.215540009868946,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 126,
+      "x": 81.80147659224932,
+      "y": 79.82951789667752,
+      "risk_level": "medium",
+      "risk_score": 0.666631817817688,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 74.54712946385555,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 80,
+      "x": 86.31034258755935,
+      "y": 79.48113035416485,
+      "risk_level": "medium",
+      "risk_score": 0.6659120321273804,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 82.12431392476624,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 51,
+      "x": 77.51328233611146,
+      "y": 8.413996499504883,
+      "risk_level": "medium",
+      "risk_score": 0.6612298488616943,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 5.0,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 7,
+      "x": 86.61761457749351,
+      "y": 76.16196153287176,
+      "risk_level": "medium",
+      "risk_score": 0.6604843139648438,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 98.76914952796177,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 121,
+      "x": 89.60912999234932,
+      "y": 81.01133946791808,
+      "risk_level": "medium",
+      "risk_score": 0.6544610261917114,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 90.73690171792867,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 131,
+      "x": 22.210781047073024,
+      "y": 33.79951568515358,
+      "risk_level": "medium",
+      "risk_score": 0.653932511806488,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 37.049216724503914,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 115,
+      "x": 87.14605901877177,
+      "y": 74.07686177542044,
+      "risk_level": "medium",
+      "risk_score": 0.6492577791213989,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 91.91738904501713,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 25,
+      "x": 78.51759613930136,
+      "y": 17.436642900499145,
+      "risk_level": "medium",
+      "risk_score": 0.6409024596214294,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.230287755886802,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 148,
+      "x": 5.147875124998935,
+      "y": 62.28904758190003,
+      "risk_level": "medium",
+      "risk_score": 0.6374901533126831,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.230425173131306,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 67,
+      "x": 80.21969807540397,
+      "y": 74.64914051180241,
+      "risk_level": "medium",
+      "risk_score": 0.6366630792617798,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 41.73790187978958,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 116,
+      "x": 80.36720768991145,
+      "y": 69.7015740995268,
+      "risk_level": "medium",
+      "risk_score": 0.6326715350151062,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 6.784702032763539,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 53,
+      "x": 89.48273504276489,
+      "y": 89.85541885270793,
+      "risk_level": "medium",
+      "risk_score": 0.6266322135925293,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 49.54954819062378,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 79,
+      "x": 11.586905952512971,
+      "y": 63.11386259972629,
+      "risk_level": "medium",
+      "risk_score": 0.622618556022644,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.082097488246329,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 13,
+      "x": 21.233911067827616,
+      "y": 53.57746840747585,
+      "risk_level": "medium",
+      "risk_score": 0.6112927794456482,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.9768969211233456,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 33,
+      "x": 94.88855372533332,
+      "y": 87.7339353380981,
+      "risk_level": "medium",
+      "risk_score": 0.6062517166137695,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 50.0,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 69,
+      "x": 98.68869366005173,
+      "y": 84.9223410494178,
+      "risk_level": "medium",
+      "risk_score": 0.6062517166137695,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 45.309068568837944,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 6,
+      "x": 5.8083612168199465,
+      "y": 67.21355474058785,
+      "risk_level": "medium",
+      "risk_score": 0.6055078506469727,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.929811216372775,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 107,
+      "x": 75.55511385430486,
+      "y": 69.6029796674973,
+      "risk_level": "medium",
+      "risk_score": 0.6032872796058655,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 6.811454266130243,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 68,
+      "x": 7.455064367977082,
+      "y": 64.96328990472146,
+      "risk_level": "medium",
+      "risk_score": 0.600567102432251,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 9.262059689762161,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 94,
+      "x": 77.0967179954561,
+      "y": 1.5456616528867428,
+      "risk_level": "medium",
+      "risk_score": 0.6004689931869507,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.766003851937999,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 44,
+      "x": 25.87799816000169,
+      "y": 33.90297910487007,
+      "risk_level": "medium",
+      "risk_score": 0.599008321762085,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 39.553457376969405,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 141,
+      "x": 25.178229582536417,
+      "y": 3.7348188749214417,
+      "risk_level": "medium",
+      "risk_score": 0.5957800149917603,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 35.790788616245365,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 47,
+      "x": 52.00680211778108,
+      "y": 89.71102599525771,
+      "risk_level": "medium",
+      "risk_score": 0.5913531184196472,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.825708137061451,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 92,
+      "x": 76.07850486168974,
+      "y": 91.48643902204485,
+      "risk_level": "medium",
+      "risk_score": 0.5901879668235779,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 47.541791782914544,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 129,
+      "x": 51.07473025775657,
+      "y": 79.57926694361011,
+      "risk_level": "medium",
+      "risk_score": 0.5884068012237549,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 9.710669813406195,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 114,
+      "x": 63.34037565104234,
+      "y": 87.73730719279554,
+      "risk_level": "medium",
+      "risk_score": 0.5882217288017273,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 80.77024650307557,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 48,
+      "x": 54.67102793432797,
+      "y": 88.70864242651173,
+      "risk_level": "medium",
+      "risk_score": 0.5881471037864685,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 71.85261017660883,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 41,
+      "x": 49.51769101112702,
+      "y": 89.72157579533267,
+      "risk_level": "medium",
+      "risk_score": 0.5876796245574951,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 6.956104169546875,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 118,
+      "x": 89.25589984899777,
+      "y": 35.94911512197552,
+      "risk_level": "medium",
+      "risk_score": 0.5856533646583557,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 9.987453326581608,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 28,
+      "x": 59.24145688620425,
+      "y": 93.67299887367345,
+      "risk_level": "medium",
+      "risk_score": 0.5837224125862122,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 86.1013510028833,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 130,
+      "x": 41.7411003148779,
+      "y": 89.00053418175663,
+      "risk_level": "medium",
+      "risk_score": 0.5831927061080933,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.189321865102686,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 95,
+      "x": 49.379559636439076,
+      "y": 92.83185625877253,
+      "risk_level": "medium",
+      "risk_score": 0.5828709006309509,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 75.34315876850161,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 142,
+      "x": 49.72485058923854,
+      "y": 82.26005606596583,
+      "risk_level": "medium",
+      "risk_score": 0.5824098587036133,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 9.073229784431843,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 144,
+      "x": 28.484049437746762,
+      "y": 12.706051265188478,
+      "risk_level": "medium",
+      "risk_score": 0.5823487639427185,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 5.0,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 146,
+      "x": 60.956433397989684,
+      "y": 76.99935530986109,
+      "risk_level": "medium",
+      "risk_score": 0.5819844603538513,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.138491117756164,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 149,
+      "x": 27.864646423661142,
+      "y": 8.5347464993768,
+      "risk_level": "medium",
+      "risk_score": 0.5810956358909607,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.948041386008395,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 35,
+      "x": 80.83973481164611,
+      "y": 65.99840460341791,
+      "risk_level": "medium",
+      "risk_score": 0.5791619420051575,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.201148354893736,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 70,
+      "x": 77.22447692966574,
+      "y": 65.76128923003434,
+      "risk_level": "medium",
+      "risk_score": 0.5789225697517395,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 8.231189991968758,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 71,
+      "x": 19.87156815341724,
+      "y": 56.830860333547164,
+      "risk_level": "medium",
+      "risk_score": 0.5786978006362915,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.9972145657522713,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 20,
+      "x": 61.18528947223795,
+      "y": 67.75643618422824,
+      "risk_level": "medium",
+      "risk_score": 0.5779156684875488,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 35.62690348492782,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 106,
+      "x": 41.038292303562976,
+      "y": 93.6154774160781,
+      "risk_level": "medium",
+      "risk_score": 0.5713895559310913,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.338638585254801,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 9,
+      "x": 70.80725777960456,
+      "y": 72.82163486118596,
+      "risk_level": "medium",
+      "risk_score": 0.5711538791656494,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 80.9628959982781,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 91,
+      "x": 71.3244787222995,
+      "y": 95.39285770025873,
+      "risk_level": "medium",
+      "risk_score": 0.5711365342140198,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 43.2483230260734,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 105,
+      "x": 24.929222914887493,
+      "y": 55.68012624583501,
+      "risk_level": "medium",
+      "risk_score": 0.5672688484191895,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.124984003660174,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 24,
+      "x": 45.606998421703594,
+      "y": 64.51727904094498,
+      "risk_level": "medium",
+      "risk_score": 0.56685870885849,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 70.57665709680194,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 19,
+      "x": 29.122914019804192,
+      "y": 59.08929431882418,
+      "risk_level": "medium",
+      "risk_score": 0.5666087865829468,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 2.570609230599333,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 22,
+      "x": 29.214464853521815,
+      "y": 51.2093058299281,
+      "risk_level": "medium",
+      "risk_score": 0.563980221748352,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 66.78921939649544,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 82,
+      "x": 33.08980248526492,
+      "y": 57.69038846263591,
+      "risk_level": "medium",
+      "risk_score": 0.5639612078666687,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 2.8125038399299984,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 127,
+      "x": 86.07305832563435,
+      "y": 64.99639307777652,
+      "risk_level": "medium",
+      "risk_score": 0.5636975169181824,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.441183554579752,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 124,
+      "x": 22.793516254194166,
+      "y": 51.13423988609378,
+      "risk_level": "medium",
+      "risk_score": 0.5626883506774902,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.665517049576081,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 97,
+      "x": 42.75410183585496,
+      "y": 96.66548190436696,
+      "risk_level": "medium",
+      "risk_score": 0.5615610480308533,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.103980010255484,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 108,
+      "x": 22.879816549162246,
+      "y": 57.0061170089365,
+      "risk_level": "medium",
+      "risk_score": 0.5615587830543518,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.3868882643265397,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 54,
+      "x": 59.78999788110851,
+      "y": 60.642905965958995,
+      "risk_level": "medium",
+      "risk_score": 0.5606158971786499,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 67.1162979104333,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 16,
+      "x": 30.42422429595377,
+      "y": 32.07800649717358,
+      "risk_level": "medium",
+      "risk_score": 0.5591982007026672,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 32.58293337152202,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 110,
+      "x": 28.9751452913768,
+      "y": 61.500722669916975,
+      "risk_level": "medium",
+      "risk_score": 0.5591322183609009,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.2598572483172648,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 76,
+      "x": 77.12703466859458,
+      "y": 97.30105547524455,
+      "risk_level": "medium",
+      "risk_score": 0.558008074760437,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 40.94202841395055,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 73,
+      "x": 81.54614284548342,
+      "y": 36.77158030594335,
+      "risk_level": "medium",
+      "risk_score": 0.5574856996536255,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 6.286128774810999,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 0,
+      "x": 37.454011884736246,
+      "y": 90.82658859666537,
+      "risk_level": "medium",
+      "risk_score": 0.5561746954917908,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.747367774099408,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 78,
+      "x": 35.84657285442726,
+      "y": 89.20465551771133,
+      "risk_level": "medium",
+      "risk_score": 0.5561746954917908,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.501908785055809,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 133,
+      "x": 33.7615171403628,
+      "y": 9.3981939840869,
+      "risk_level": "medium",
+      "risk_score": 0.5558785796165466,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.108836074240763,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 60,
+      "x": 38.8677289689482,
+      "y": 54.87337893665861,
+      "risk_level": "medium",
+      "risk_score": 0.5544955134391785,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.227966367699915,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 59,
+      "x": 32.53303307632643,
+      "y": 16.080805141749867,
+      "risk_level": "medium",
+      "risk_score": 0.5535205006599426,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.499574400976596,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 84,
+      "x": 31.09823217156622,
+      "y": 19.52429877980445,
+      "risk_level": "medium",
+      "risk_score": 0.5532811284065247,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 44.433883872338164,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 57,
+      "x": 19.59828624191452,
+      "y": 66.35017691080559,
+      "risk_level": "medium",
+      "risk_score": 0.5529469847679138,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 50.81622750818289,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 122,
+      "x": 31.800347497186387,
+      "y": 86.70723185801037,
+      "risk_level": "medium",
+      "risk_score": 0.552501916885376,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 6.662255100880632,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 135,
+      "x": 32.320293202075526,
+      "y": 3.5942273796742086,
+      "risk_level": "medium",
+      "risk_score": 0.5521979928016663,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.011334405307865,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 128,
+      "x": 0.6952130531190703,
+      "y": 70.19668772577033,
+      "risk_level": "medium",
+      "risk_score": 0.5512362122535706,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 5.289825649948134,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 137,
+      "x": 70.30189588951778,
+      "y": 54.26446347075766,
+      "risk_level": "medium",
+      "risk_score": 0.5482208132743835,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.2213216715913,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 138,
+      "x": 36.3629602379294,
+      "y": 28.65412521282844,
+      "risk_level": "medium",
+      "risk_score": 0.5448753833770752,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.4342317970362144,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 62,
+      "x": 82.87375091519293,
+      "y": 65.19612595026005,
+      "risk_level": "medium",
+      "risk_score": 0.541089653968811,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 6.278241284419386,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 12,
+      "x": 83.24426408004217,
+      "y": 63.35297107608947,
+      "risk_level": "medium",
+      "risk_score": 0.5403904318809509,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.2003246486782,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 102,
+      "x": 31.435598107632668,
+      "y": 85.11366715168569,
+      "risk_level": "medium",
+      "risk_score": 0.5385218858718872,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.461080078446789,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 87,
+      "x": 63.75574713552131,
+      "y": 2.431596643145384,
+      "risk_level": "medium",
+      "risk_score": 0.5366560816764832,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 2.8125415317463345,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 63,
+      "x": 35.67533266935893,
+      "y": 22.42693094605598,
+      "risk_level": "medium",
+      "risk_score": 0.5362767577171326,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 5.0,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 38,
+      "x": 68.42330265121569,
+      "y": 52.965057835600646,
+      "risk_level": "medium",
+      "risk_score": 0.536235511302948,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 6.108355304194292,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 46,
+      "x": 31.171107608941096,
+      "y": 72.59556788702393,
+      "risk_level": "medium",
+      "risk_score": 0.5342704057693481,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 25.662648651439934,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 26,
+      "x": 19.967378215835975,
+      "y": 69.09377381024659,
+      "risk_level": "medium",
+      "risk_score": 0.5341454148292542,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 45.61024042961598,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 36,
+      "x": 30.46137691733707,
+      "y": 81.72222002012158,
+      "risk_level": "medium",
+      "risk_score": 0.5339990854263306,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 75.04850194892586,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 117,
+      "x": 18.657005888603585,
+      "y": 70.24840839871092,
+      "risk_level": "medium",
+      "risk_score": 0.5328066945075989,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 4.149911296693794,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 143,
+      "x": 30.087830981676966,
+      "y": 36.019064141126286,
+      "risk_level": "medium",
+      "risk_score": 0.5302690863609314,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 39.77941247453485,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 85,
+      "x": 32.518332202674706,
+      "y": 72.24521152615053,
+      "risk_level": "medium",
+      "risk_score": 0.529927670955658,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 28.534863630057494,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 113,
+      "x": 80.8120379564417,
+      "y": 51.832965236373674,
+      "risk_level": "medium",
+      "risk_score": 0.5269050598144531,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.420243757799297,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 125,
+      "x": 42.71077886262563,
+      "y": 50.15162946871996,
+      "risk_level": "medium",
+      "risk_score": 0.5267589688301086,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.230669402258176,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 18,
+      "x": 43.194501864211574,
+      "y": 4.077514155476392,
+      "risk_level": "medium",
+      "risk_score": 0.5249992609024048,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 21.976554710629852,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 2,
+      "x": 73.1993941811405,
+      "y": 14.48948720912231,
+      "risk_level": "medium",
+      "risk_score": 0.5212469696998596,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 2.9351114860175462,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 81,
+      "x": 62.329812682755794,
+      "y": 50.26370931051921,
+      "risk_level": "medium",
+      "risk_score": 0.5171505808830261,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 73.57399481863837,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 23,
+      "x": 36.63618432936917,
+      "y": 22.649577519793795,
+      "risk_level": "medium",
+      "risk_score": 0.5167444944381714,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 4.76282253991353,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 64,
+      "x": 28.093450968738075,
+      "y": 71.2179221347536,
+      "risk_level": "medium",
+      "risk_score": 0.5161460041999817,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 29.158870717184058,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 88,
+      "x": 88.72127425763266,
+      "y": 64.54722959071678,
+      "risk_level": "medium",
+      "risk_score": 0.513236939907074,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 8.323880285782998,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 61,
+      "x": 27.134903177389592,
+      "y": 69.18951976926932,
+      "risk_level": "medium",
+      "risk_score": 0.5127034783363342,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 25.453410543279023,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 75,
+      "x": 72.90071680409874,
+      "y": 24.398964337908357,
+      "risk_level": "medium",
+      "risk_score": 0.5122302174568176,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 28.021452682185878,
+      "recommendation": "Elevated ammonia detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 15,
+      "x": 18.34045098534338,
+      "y": 83.5302495589238,
+      "risk_level": "medium",
+      "risk_score": 0.5095027685165405,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 8.923011153680337,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 49,
+      "x": 18.485445552552704,
+      "y": 77.98755458576238,
+      "risk_level": "medium",
+      "risk_score": 0.5075840950012207,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 6.023790821245068,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 43,
+      "x": 90.9320402078782,
+      "y": 63.31014572732679,
+      "risk_level": "medium",
+      "risk_score": 0.5075399875640869,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 7.975583946092522,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 136,
+      "x": 51.87906217433661,
+      "y": 46.55980181324602,
+      "risk_level": "medium",
+      "risk_score": 0.5020455121994019,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 5.0,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 89,
+      "x": 47.22149251619493,
+      "y": 17.711067940704893,
+      "risk_level": "medium",
+      "risk_score": 0.5014800429344177,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.908854120519818,
+      "recommendation": "Elevated nitrogen dioxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 90,
+      "x": 11.959424593830171,
+      "y": 94.04585843529144,
+      "risk_level": "medium",
+      "risk_score": 0.5007184147834778,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 5.6423237708174305,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 123,
+      "x": 11.005192452767677,
+      "y": 91.32405525564712,
+      "risk_level": "medium",
+      "risk_score": 0.5007184147834778,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 56.81481019634577,
+      "recommendation": "Elevated methane detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 99,
+      "x": 10.789142699330444,
+      "y": 85.300945546736,
+      "risk_level": "medium",
+      "risk_score": 0.500128448009491,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 5.9985274318155835,
+      "recommendation": "Elevated carbon monoxide detected. Increase monitoring frequency and check soil conditions."
+    },
+    {
+      "location_id": 3,
+      "x": 59.86584841970366,
+      "y": 48.9452760277563,
+      "risk_level": "low",
+      "risk_score": 0.49865779280662537,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 2.813330843754506,
+      "recommendation": "Field conditions are normal. Monitor nitrogen dioxide levels regularly."
+    },
+    {
+      "location_id": 4,
+      "x": 15.601864044243651,
+      "y": 98.56504541106007,
+      "risk_level": "low",
+      "risk_score": 0.49789685010910034,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 5.501705121181281,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 32,
+      "x": 6.505159298527952,
+      "y": 92.46936182785628,
+      "risk_level": "low",
+      "risk_score": 0.49789685010910034,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 88.85085106738998,
+      "recommendation": "Field conditions are normal. Monitor methane levels regularly."
+    },
+    {
+      "location_id": 42,
+      "x": 3.4388521115218396,
+      "y": 90.04180571633304,
+      "risk_level": "low",
+      "risk_score": 0.49789685010910034,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 6.697390115045575,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 98,
+      "x": 2.541912674409519,
+      "y": 96.36199770892529,
+      "risk_level": "low",
+      "risk_score": 0.49789685010910034,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 6.023993358744833,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 111,
+      "x": 16.122128725400444,
+      "y": 99.00538501042632,
+      "risk_level": "low",
+      "risk_score": 0.49729183316230774,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 5.742388512946472,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 39,
+      "x": 44.01524937396013,
+      "y": 24.18522909004517,
+      "risk_level": "low",
+      "risk_score": 0.495213121175766,
+      "primary_gas": "CH4",
+      "primary_gas_concentration": 64.23972721408128,
+      "recommendation": "Field conditions are normal. Monitor methane levels regularly."
+    },
+    {
+      "location_id": 86,
+      "x": 72.96061783380641,
+      "y": 28.07723624408558,
+      "risk_level": "low",
+      "risk_score": 0.4933416545391083,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 33.7631335142859,
+      "recommendation": "Field conditions are normal. Monitor ammonia levels regularly."
+    },
+    {
+      "location_id": 134,
+      "x": 94.29097039125192,
+      "y": 57.8280140996174,
+      "risk_level": "low",
+      "risk_score": 0.49285632371902466,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 8.871412366584313,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 11,
+      "x": 96.99098521619943,
+      "y": 63.23058305935795,
+      "risk_level": "low",
+      "risk_score": 0.491384357213974,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 10.0,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 50,
+      "x": 96.95846277645586,
+      "y": 64.20316461542878,
+      "risk_level": "low",
+      "risk_score": 0.491384357213974,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 9.700197000731553,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 139,
+      "x": 97.17820827209607,
+      "y": 59.08332605690107,
+      "risk_level": "low",
+      "risk_score": 0.48566967248916626,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 10.0,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 74,
+      "x": 70.68573438476172,
+      "y": 26.520236768172545,
+      "risk_level": "low",
+      "risk_score": 0.4755452573299408,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 5.976432694420365,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 17,
+      "x": 52.475643163223786,
+      "y": 18.651851039985424,
+      "risk_level": "low",
+      "risk_score": 0.47464457154273987,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 2.6080991885381697,
+      "recommendation": "Field conditions are normal. Monitor nitrogen dioxide levels regularly."
+    },
+    {
+      "location_id": 65,
+      "x": 54.26960831582485,
+      "y": 23.724908749680008,
+      "risk_level": "low",
+      "risk_score": 0.4636792540550232,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 23.436113583587893,
+      "recommendation": "Field conditions are normal. Monitor ammonia levels regularly."
+    },
+    {
+      "location_id": 147,
+      "x": 50.26790232288615,
+      "y": 21.582102749684317,
+      "risk_level": "low",
+      "risk_score": 0.4636792540550232,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 27.16676846135023,
+      "recommendation": "Field conditions are normal. Monitor ammonia levels regularly."
+    },
+    {
+      "location_id": 96,
+      "x": 52.27328293819941,
+      "y": 42.81841483173143,
+      "risk_level": "low",
+      "risk_score": 0.45924386382102966,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.436145754820388,
+      "recommendation": "Field conditions are normal. Monitor nitrogen dioxide levels regularly."
+    },
+    {
+      "location_id": 101,
+      "x": 63.64104112637804,
+      "y": 38.50977286019253,
+      "risk_level": "low",
+      "risk_score": 0.4583149254322052,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 4.506233671513028,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 8,
+      "x": 60.11150117432088,
+      "y": 23.763754399239968,
+      "risk_level": "low",
+      "risk_score": 0.4485788643360138,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 29.49463508721129,
+      "recommendation": "Field conditions are normal. Monitor ammonia levels regularly."
+    },
+    {
+      "location_id": 27,
+      "x": 51.42344384136116,
+      "y": 38.67353463005374,
+      "risk_level": "low",
+      "risk_score": 0.44328629970550537,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.67911086031044,
+      "recommendation": "Field conditions are normal. Monitor nitrogen dioxide levels regularly."
+    },
+    {
+      "location_id": 93,
+      "x": 56.127719756949624,
+      "y": 37.01587002554444,
+      "risk_level": "low",
+      "risk_score": 0.443101704120636,
+      "primary_gas": "NH3",
+      "primary_gas_concentration": 19.050513357934754,
+      "recommendation": "Field conditions are normal. Monitor ammonia levels regularly."
+    },
+    {
+      "location_id": 103,
+      "x": 50.85706911647028,
+      "y": 31.692200515627768,
+      "risk_level": "low",
+      "risk_score": 0.43881872296333313,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 3.2483538647199137,
+      "recommendation": "Field conditions are normal. Monitor nitrogen dioxide levels regularly."
+    },
+    {
+      "location_id": 45,
+      "x": 66.2522284353982,
+      "y": 34.92095746126609,
+      "risk_level": "low",
+      "risk_score": 0.4388061463832855,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 5.0884590005531365,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 119,
+      "x": 53.93422419156507,
+      "y": 29.359184426449335,
+      "risk_level": "low",
+      "risk_score": 0.4311216473579407,
+      "primary_gas": "CO",
+      "primary_gas_concentration": 4.688108337778251,
+      "recommendation": "Field conditions are normal. Monitor carbon monoxide levels regularly."
+    },
+    {
+      "location_id": 30,
+      "x": 60.75448519014384,
+      "y": 34.10663510502585,
+      "risk_level": "low",
+      "risk_score": 0.42200884222984314,
+      "primary_gas": "NO2",
+      "primary_gas_concentration": 2.4858741250042296,
+      "recommendation": "Field conditions are normal. Monitor nitrogen dioxide levels regularly."
+    }
+  ]
+}

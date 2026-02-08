@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriGraph AI - Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+        }
+        
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #5568d3;
+        }
+        
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            color: #667eea;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        
+        .stat-card p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .visualizations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .viz-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-height: 500px;
+        }
+        
+        .viz-card h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .viz-card > div {
+            width: 100%;
+            height: 600px;
+        }
+        
+        #fieldMap, #heatmap, #trainingHistory {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .alerts-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .alerts-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .alert-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+        
+        .alert-critical {
+            background: #fee;
+            border-color: #f00;
+        }
+        
+        .alert-high {
+            background: #ffe;
+            border-color: #fa0;
+        }
+        
+        .alert-medium {
+            background: #ffd;
+            border-color: #fc0;
+        }
+        
+        .alert-low {
+            background: #efe;
+            border-color: #0a0;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            background: #fee;
+            color: #c00;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌾 AgriGraph AI - Soil Gas Risk Prediction</h1>
+            <p>Interactive Dashboard for Farm Field Risk Analysis</p>
+        </div>
+        
+        <div class="controls">
+            <div style="margin-bottom: 10px;">
+                <button class="btn" id="runBtn" onclick="runAnalysis(false)">Train New Model</button>
+                <button class="btn" id="loadBtn" onclick="runAnalysis(true)" style="background: #10b981; display: none;">Use Pre-trained Model</button>
+                <button class="btn" id="refreshBtn" onclick="loadData()" disabled>Refresh Data</button>
+            </div>
+            <p id="modelStatus" style="margin-top: 10px; color: #666; font-size: 14px;"></p>
+            <div id="modelInfo" style="margin-top: 10px; padding: 10px; background: #f0f0f0; border-radius: 5px; font-size: 12px; color: #555; display: none;">
+                <strong>💡 How to use pre-trained models:</strong><br>
+                • <strong>Train New Model:</strong> Trains from scratch (2-5 min), saves to outputs/model.pt<br>
+                • <strong>Use Pre-trained Model:</strong> Loads saved model (seconds), requires outputs/model.pt to exist<br>
+                • After first training, both options will be available. See MODEL_USAGE.md for details.
+            </div>
+        </div>
+        
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Running analysis... This may take a few minutes.</p>
+        </div>
+        
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <div id="content" style="display: none;">
+            <div class="stats" id="stats"></div>
+            
+            <div class="visualizations">
+                <div class="viz-card">
+                    <h2>Field Map - Risk Prediction</h2>
+                    <div id="fieldMap"></div>
+                </div>
+                
+                <div class="viz-card">
+                    <h2>Risk Heatmap</h2>
+                    <div id="heatmap"></div>
+                </div>
+            </div>
+            
+            <div class="viz-card" id="trainingHistoryCard" style="display: none;">
+                <h2>Training History</h2>
+                <div id="trainingHistory"></div>
+            </div>
+            
+            <div class="alerts-section">
+                <h2>Risk Alerts</h2>
+                <div id="alerts"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let dataLoaded = false;
+        
+        // Check for pre-trained model on page load
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('/api/check_model');
+                const data = await response.json();
+                const loadBtn = document.getElementById('loadBtn');
+                const status = document.getElementById('modelStatus');
+                
+                const infoDiv = document.getElementById('modelInfo');
+                if (data.model_exists) {
+                    loadBtn.style.display = 'inline-block';
+                    status.textContent = '✓ Pre-trained model available at outputs/model.pt (click "Use Pre-trained Model" for faster results)';
+                    status.style.color = '#10b981';
+                    infoDiv.style.display = 'block';
+                } else {
+                    loadBtn.style.display = 'none';
+                    status.textContent = 'No pre-trained model found. Click "Train New Model" to create one (will be saved to outputs/model.pt).';
+                    status.style.color = '#f59e0b';
+                    infoDiv.style.display = 'block';
+                }
+            } catch (err) {
+                console.error('Error checking model:', err);
+            }
+        });
+        
+        async function runAnalysis(usePretrained = false) {
+            const runBtn = document.getElementById('runBtn');
+            const loadBtn = document.getElementById('loadBtn');
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            const content = document.getElementById('content');
+            
+            runBtn.disabled = true;
+            if (loadBtn) loadBtn.disabled = true;
+            loading.style.display = 'block';
+            error.style.display = 'none';
+            content.style.display = 'none';
+            
+            if (usePretrained) {
+                loading.querySelector('p').textContent = 'Loading pre-trained model and generating predictions...';
+            } else {
+                loading.querySelector('p').textContent = 'Training new model... This may take a few minutes.';
+            }
+            
+            try {
+                const response = await fetch('/api/run_analysis', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ use_pretrained: usePretrained })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    await loadData();
+                    // Update model status after training
+                    if (!usePretrained) {
+                        const status = document.getElementById('modelStatus');
+                        status.textContent = '✓ Model trained and saved. You can use it next time!';
+                        status.style.color = '#10b981';
+                        const loadBtn = document.getElementById('loadBtn');
+                        loadBtn.style.display = 'inline-block';
+                    }
+                } else {
+                    throw new Error(result.error || 'Analysis failed');
+                }
+            } catch (err) {
+                error.textContent = 'Error: ' + err.message;
+                error.style.display = 'block';
+            } finally {
+                runBtn.disabled = false;
+                if (loadBtn) loadBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+        
+        async function loadData() {
+            try {
+                const [dataRes, fieldMapRes, heatmapRes, alertsRes, historyRes] = await Promise.all([
+                    fetch('/api/data'),
+                    fetch('/api/field_map'),
+                    fetch('/api/heatmap'),
+                    fetch('/api/alerts'),
+                    fetch('/api/training_history')
+                ]);
+                
+                if (!dataRes.ok) {
+                    throw new Error('No data available. Please run analysis first.');
+                }
+                
+                const data = await dataRes.json();
+                const fieldMap = await fieldMapRes.json();
+                const heatmap = await heatmapRes.json();
+                const alerts = await alertsRes.json();
+                
+                // Update stats
+                updateStats(data);
+                
+                // Update visualizations
+                Plotly.newPlot('fieldMap', fieldMap.data, fieldMap.layout, {
+                    responsive: true,
+                    displayModeBar: true,
+                    modeBarButtonsToRemove: ['pan2d', 'lasso2d'],
+                    displaylogo: false
+                });
+                Plotly.newPlot('heatmap', heatmap.data, heatmap.layout, {
+                    responsive: true,
+                    displayModeBar: true,
+                    modeBarButtonsToRemove: ['pan2d', 'lasso2d'],
+                    displaylogo: false
+                });
+                
+                // Training history
+                if (historyRes.ok) {
+                    const history = await historyRes.json();
+                    document.getElementById('trainingHistoryCard').style.display = 'block';
+                    Plotly.newPlot('trainingHistory', history.data, history.layout, {
+                        responsive: true,
+                        displayModeBar: true,
+                        modeBarButtonsToRemove: ['pan2d', 'lasso2d'],
+                        displaylogo: false
+                    });
+                }
+                
+                // Update alerts
+                updateAlerts(alerts.alerts);
+                
+                document.getElementById('content').style.display = 'block';
+                document.getElementById('refreshBtn').disabled = false;
+                dataLoaded = true;
+                
+            } catch (err) {
+                document.getElementById('error').textContent = 'Error: ' + err.message;
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+        
+        function updateStats(data) {
+            const stats = document.getElementById('stats');
+            stats.innerHTML = `
+                <div class="stat-card">
+                    <h3>${data.num_nodes}</h3>
+                    <p>Sensor Locations</p>
+                </div>
+                <div class="stat-card">
+                    <h3>${data.alerts_count.critical}</h3>
+                    <p>Critical Alerts</p>
+                </div>
+                <div class="stat-card">
+                    <h3>${data.alerts_count.high}</h3>
+                    <p>High Risk</p>
+                </div>
+                <div class="stat-card">
+                    <h3>${data.test_metrics ? data.test_metrics.r2.toFixed(3) : 'N/A'}</h3>
+                    <p>R² Score</p>
+                </div>
+            `;
+        }
+        
+        function updateAlerts(alerts) {
+            const container = document.getElementById('alerts');
+            
+            if (!alerts || alerts.length === 0) {
+                container.innerHTML = '<p>No alerts generated.</p>';
+                return;
+            }
+            
+            // Show top 20 alerts
+            const topAlerts = alerts.slice(0, 20);
+            
+            container.innerHTML = topAlerts.map(alert => {
+                const levelClass = `alert-${alert.risk_level}`;
+                return `
+                    <div class="alert-item ${levelClass}">
+                        <strong>Location ${alert.location_id}</strong> at (${alert.x.toFixed(1)}, ${alert.y.toFixed(1)})
+                        <br>
+                        <strong>Risk Level:</strong> ${alert.risk_level.toUpperCase()} (Score: ${alert.risk_score.toFixed(3)})
+                        <br>
+                        <strong>Primary Gas:</strong> ${alert.primary_gas} (${alert.primary_gas_concentration.toFixed(2)} ppm)
+                        <br>
+                        <strong>Recommendation:</strong> ${alert.recommendation}
+                    </div>
+                `;
+            }).join('');
+            
+            if (alerts.length > 20) {
+                container.innerHTML += `<p style="text-align: center; margin-top: 10px; color: #666;">
+                    Showing top 20 of ${alerts.length} total alerts
+                </p>`;
+            }
+        }
+        
+        // Try to load data on page load
+        window.addEventListener('load', () => {
+            loadData().catch(() => {
+                // Silently fail if no data available
+            });
+        });
+    </script>
+</body>
+</html>
+
