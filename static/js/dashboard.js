@@ -427,6 +427,15 @@ async function loadResults() {
         console.log('=== LOADRESULTS COMPLETED SUCCESSFULLY ===');
         resetButtons();
 
+        // Scroll to stats section so user can see the results
+        const statsSection = document.getElementById('statsSection');
+        if (statsSection) {
+            statsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Show a success alert at the top
+        showSuccessAlert('Training complete! Results are displayed below.');
+
     } catch (error) {
         console.error('=== ERROR IN LOADRESULTS ===');
         console.error('Error details:', error);
@@ -440,6 +449,27 @@ async function loadResults() {
 function resetButtons() {
     document.getElementById('trainBtn').disabled = false;
     document.getElementById('loadBtn').disabled = false;
+}
+
+function showSuccessAlert(message) {
+    // Remove any existing success alert
+    const existing = document.getElementById('successAlert');
+    if (existing) existing.remove();
+
+    const alert = document.createElement('div');
+    alert.id = 'successAlert';
+    alert.className = 'alert alert-success alert-dismissible fade show';
+    alert.style.cssText = 'position: fixed; top: 70px; left: 50%; transform: translateX(-50%); z-index: 9999; min-width: 400px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+    alert.innerHTML = `
+        <strong>&#10003; Success!</strong> ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    document.body.appendChild(alert);
+
+    // Auto-dismiss after 5 seconds
+    setTimeout(() => {
+        if (alert.parentNode) alert.remove();
+    }, 5000);
 }
 
 // ============================================
