@@ -53,10 +53,10 @@ class AgriGraphGCN(nn.Module):
         # Output layer
         self.conv_out = GCNConv(hidden_dim, output_dim)
         
-        # Batch normalization layers (optional, can improve training)
+        # Layer normalization (works with any batch size, stable for GNNs)
         self.batch_norms = nn.ModuleList()
         for i in range(num_layers - 1):
-            self.batch_norms.append(nn.BatchNorm1d(hidden_dim))
+            self.batch_norms.append(nn.LayerNorm(hidden_dim))
     
     def forward(self, x: torch.Tensor, edge_index: torch.Tensor) -> torch.Tensor:
         """

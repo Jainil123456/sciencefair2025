@@ -79,8 +79,10 @@ def generate_gas_concentrations(
                     mean=np.zeros(num_nodes),
                     cov=correlation_matrix
                 )
-            except:
+            except np.linalg.LinAlgError as e:
                 # Fallback if correlation matrix is not positive definite
+                print(f"⚠️  Warning: Correlation matrix not positive definite. Using independent samples.")
+                print(f"   Error: {e}")
                 samples = np.random.normal(0, 1, num_nodes)
             
             # Normalize and scale to gas range

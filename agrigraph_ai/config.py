@@ -56,8 +56,14 @@ class Config:
     DPI = 300
     OUTPUT_DIR = 'outputs'
     
-    # Random seed for reproducibility
-    RANDOM_SEED = 42
+    # Random seed for reproducibility and data variance control
+    # Seed Modes:
+    # - 'auto': Generates new seed each run (timestamp-based, different data each time)
+    # - 'fixed': Uses seed=42 (same data every run, reproducible)
+    # - 'custom': User-provided seed value (reproducible, user-controlled)
+    RANDOM_SEED = None  # None means use auto mode by default
+    ENABLE_SEED_CONTROL = True  # Allow users to control seed via UI
+    DEFAULT_SEED_MODE = 'auto'  # Default to auto mode for data variance
 
 
 

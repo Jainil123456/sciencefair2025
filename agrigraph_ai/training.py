@@ -7,8 +7,9 @@ import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from typing import Tuple, Dict, Optional
+from typing import Tuple, Dict, Optional, Callable
 import os
+import time
 
 from .model import AgriGraphGCN, EarlyStopping
 
@@ -160,11 +161,13 @@ def train_model(
     early_stopping_patience: int = 20,
     early_stopping_min_delta: float = 0.001,
     random_seed: int = 42,
-    verbose: bool = True
+    verbose: bool = True,
+    progress_callback: Optional[Callable] = None,
+    cancel_check: Optional[Callable] = None
 ) -> Tuple[nn.Module, Dict[str, list], Dict[str, float]]:
     """
     Train the GCN model.
-    
+
     Args:
         model: GCN model to train
         data: PyTorch Geometric Data object
@@ -177,7 +180,9 @@ def train_model(
         early_stopping_min_delta: Early stopping minimum delta
         random_seed: Random seed
         verbose: Print training progress
-        
+        progress_callback: Optional callback function for progress updates
+        cancel_check: Optional callback function to check for cancellation
+
     Returns:
         Tuple of (trained_model, training_history, test_metrics)
     """
@@ -211,18 +216,27 @@ def train_model(
     
     best_val_loss = float('inf')
     best_model_state = None
-    
+    epoch_times = []  # Track epoch times for ETA calculation
+
     # Training loop
     for epoch in range(num_epochs):
+        # Check for cancellation at the start of each epoch
+        if cancel_check and cancel_check():
+            if verbose:
+                print(f"Training cancelled at epoch {epoch+1}")
+            break
+
+        epoch_start = time.time()
+
         # Train
         train_loss = train_epoch(model, data, optimizer, criterion, train_mask)
-        
+
         # Validate
         val_loss, val_pred, val_target = evaluate(model, data, criterion, val_mask)
-        
+
         # Update learning rate
         scheduler.step(val_loss)
-        
+
         # Compute metrics
         train_pred, train_target = None, None
         with torch.no_grad():
@@ -230,28 +244,51 @@ def train_model(
             out = model(data.x, data.edge_index)
             train_pred = out[train_mask].cpu().numpy().flatten()
             train_target = data.y[train_mask].cpu().numpy()
-        
+
         train_metrics = compute_metrics(train_pred, train_target)
         val_metrics = compute_metrics(val_pred, val_target)
-        
+
         # Save history
         history['train_loss'].append(train_loss)
         history['val_loss'].append(val_loss)
         history['train_metrics'].append(train_metrics)
         history['val_metrics'].append(val_metrics)
-        
+
         # Save best model
         if val_loss < best_val_loss:
             best_val_loss = val_loss
             best_model_state = model.state_dict().copy()
-        
+
+        # Track epoch time for ETA calculation
+        epoch_time = time.time() - epoch_start
+        epoch_times.append(epoch_time)
+
+        # Calculate ETA based on last 10 epochs average
+        if len(epoch_times) > 0:
+            avg_epoch_time = np.mean(epoch_times[-10:])
+            remaining_epochs = num_epochs - epoch - 1
+            eta_seconds = avg_epoch_time * remaining_epochs
+        else:
+            eta_seconds = 0.0
+
+        # Call progress callback
+        if progress_callback:
+            progress_callback(
+                epoch=epoch+1,
+                train_loss=train_loss,
+                val_loss=val_loss,
+                val_r2=val_metrics['r2'],
+                eta_seconds=eta_seconds,
+                message=f"Epoch {epoch+1}/{num_epochs}"
+            )
+
         # Print progress
         if verbose and (epoch + 1) % 10 == 0:
             print(f"Epoch {epoch+1}/{num_epochs} | "
                   f"Train Loss: {train_loss:.4f} | "
                   f"Val Loss: {val_loss:.4f} | "
                   f"Val R²: {val_metrics['r2']:.4f}")
-        
+
         # Early stopping
         if early_stopping(val_loss):
             if verbose:

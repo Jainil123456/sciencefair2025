@@ -1,0 +1,589 @@
+/* ============================================
+   AgriGraph AI - Custom Dashboard Styles
+   ============================================ */
+
+/* Root Variables */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --success-color: #198754;
+    --info-color: #0dcaf0;
+}
+
+/* ============================================
+   Global Styles
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: var(--primary-gradient);
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+/* ============================================
+   Navigation Bar
+   ============================================ */
+
+.navbar {
+    background: var(--primary-gradient) !important;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.bg-gradient {
+    background: var(--primary-gradient) !important;
+}
+
+/* ============================================
+   Cards & Components
+   ============================================ */
+
+.card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-header {
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    border: none;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Stat Cards */
+.stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius: 50%;
+    transform: translate(30px, -30px);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    opacity: 0.7;
+}
+
+.stat-card h3 {
+    font-weight: 700;
+    margin: 0;
+}
+
+.stat-card .text-muted {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Visualization Cards */
+.viz-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.viz-card .card-body {
+    flex: 1;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.btn-lg {
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #6a3d92 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+}
+
+/* ============================================
+   Progress Bar
+   ============================================ */
+
+.progress {
+    background-color: #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.progress-bar-animated {
+    animation: progress-bar-stripes 1s linear infinite;
+}
+
+/* ============================================
+   Alerts
+   ============================================ */
+
+.alert {
+    border: none;
+    border-left: 4px solid;
+    border-radius: 8px;
+}
+
+.alert-danger {
+    border-left-color: #dc3545;
+    background-color: #fff5f7;
+    color: #721c24;
+}
+
+.alert-warning {
+    border-left-color: #ffc107;
+    background-color: #fffbf0;
+    color: #664d03;
+}
+
+.alert-success {
+    border-left-color: #198754;
+    background-color: #f1f8f5;
+    color: #0f5132;
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+.table td {
+    vertical-align: middle;
+    padding: 1rem 0.75rem;
+}
+
+/* ============================================
+   Badges
+   ============================================ */
+
+.badge {
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.badge-critical {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge-high {
+    background-color: #fd7e14;
+    color: white;
+}
+
+.badge-medium {
+    background-color: #ffc107;
+    color: #000;
+    font-weight: 600;
+}
+
+.badge-low {
+    background-color: #20c997;
+    color: white;
+}
+
+/* ============================================
+   Forms
+   ============================================ */
+
+.form-select,
+.form-control {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-select:focus,
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    color: #495057;
+}
+
+/* ============================================
+   Pagination
+   ============================================ */
+
+.pagination {
+    gap: 0.25rem;
+}
+
+.page-link {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    color: #667eea;
+    transition: all 0.3s ease;
+}
+
+.page-link:hover {
+    background-color: #f8f9fa;
+    border-color: #667eea;
+    color: #764ba2;
+}
+
+.page-item.active .page-link {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* ============================================
+   Loading Spinner
+   ============================================ */
+
+.spinner-border {
+    color: #667eea;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.2em;
+}
+
+/* Custom spinner for progress status */
+.spinner {
+    display: inline-block;
+    animation: spin 2s linear infinite;
+    margin-right: 0.5rem;
+    font-style: normal;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pulsing effect for progress percentage */
+#progressPercent {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* ============================================
+   Skeleton Loading
+   ============================================ */
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e9ecef 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .navbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+
+    .card-header {
+        padding: 0.75rem 1rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .stat-card h3 {
+        font-size: 1.75rem;
+    }
+
+    #fieldMapPlot,
+    #heatmapPlot,
+    #trainingHistoryPlot {
+        height: 350px !important;
+    }
+
+    .btn-lg {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .table td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .progress {
+        height: 24px;
+    }
+
+    #progressPercent {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .stat-card {
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-icon {
+        font-size: 1.5rem;
+    }
+
+    .stat-card h3 {
+        font-size: 1.5rem;
+    }
+
+    #fieldMapPlot,
+    #heatmapPlot {
+        height: 280px !important;
+    }
+
+    .alert {
+        font-size: 0.9rem;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .form-select,
+    .form-control {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================
+   Animation Utilities
+   ============================================ */
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-down {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 500px;
+    }
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.shadow-lg {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+.border-0 {
+    border: none !important;
+}
+
+.border-danger {
+    border-color: #dc3545 !important;
+}
+
+.border-warning {
+    border-color: #ffc107 !important;
+}
+
+.border-success {
+    border-color: #198754 !important;
+}
+
+.border-3 {
+    border-width: 3px !important;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+/* ============================================
+   LLM Recommendations Styling
+   ============================================ */
+
+.recommendation-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.recommendation-text p {
+    margin-bottom: 1rem;
+}
+
+.recommendation-text strong {
+    color: #495057;
+    font-weight: 600;
+}
+
+.recommendation-text em {
+    font-style: italic;
+    color: #6c757d;
+}
+
+#gptRecommendation,
+#geminiRecommendation {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card.border-primary,
+.card.border-success {
+    min-height: 550px;
+}
+
+#llmSection .card-header {
+    font-weight: 500;
+    padding: 1rem 1.25rem;
+}
+
+#llmSection .card-body {
+    background: #f8f9fa;
+}
