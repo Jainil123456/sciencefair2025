@@ -322,6 +322,12 @@ def index():
     return render_template('dashboard.html')
 
 
+@app.route('/about')
+def about():
+    """Technical documentation page."""
+    return render_template('about.html')
+
+
 @app.route('/api/data')
 def get_data():
     """Get all visualization data."""
@@ -474,17 +480,7 @@ def upload_csv():
                         'error': validation['error']
                     }), 400
 
-                if not validation['has_coordinates']:
-                    return jsonify({
-                        'success': False,
-                        'error': 'Missing required columns: x/longitude and y/latitude'
-                    }), 400
-
-                if not validation['has_gases']:
-                    return jsonify({
-                        'success': False,
-                        'error': 'Missing required gas columns: NH3, CH4, NO2, CO'
-                    }), 400
+                # Flexible loader handles any format - no strict column requirements
 
                 # Load data
                 locations, features, risk_labels = load_sensor_data(tmp.name, file_type=ext)
@@ -666,9 +662,12 @@ def get_current_seed():
 def _run_training_thread(job_id, use_pretrained, locations, features, risk_labels, graph, random_seed):
     """Background thread function for training."""
     try:
-        # Step 3: Initialize model
+        # Step 3: Initialize model - use actual feature count from data
+        actual_input_dim = features.shape[1] if features is not None else Config.INPUT_FEATURES
+        print(f"[{job_id}] Model input_dim={actual_input_dim} (features shape: {features.shape if features is not None else 'None'})")
+
         model = AgriGraphGCN(
-            input_dim=Config.INPUT_FEATURES,
+            input_dim=actual_input_dim,
             hidden_dim=Config.HIDDEN_DIM,
             num_layers=Config.NUM_LAYERS,
             dropout=Config.DROPOUT,
@@ -740,8 +739,17 @@ def _run_training_thread(job_id, use_pretrained, locations, features, risk_label
             predictions = predictions.cpu().numpy().flatten()
 
         # Step 6: Generate alerts
-        gas_features = features[:, :4]
+        # Handle variable number of feature columns
+        num_feature_cols = features.shape[1] - 2  # subtract x, y coordinates
         gas_names = list(Config.GAS_RANGES.keys())
+
+        if num_feature_cols >= 4:
+            gas_features = features[:, :4]
+        else:
+            # Pad with zeros if fewer than 4 gas columns
+            gas_features = np.zeros((features.shape[0], 4))
+            gas_features[:, :num_feature_cols] = features[:, :num_feature_cols]
+
         from .interpretation import generate_alerts as gen_alerts
         alerts = gen_alerts(
             locations, predictions, gas_features,
@@ -812,12 +820,22 @@ def run_analysis():
         job_id = progress_manager.create_job(Config.NUM_EPOCHS)
 
         # Step 1: Check if uploaded data exists, otherwise generate synthetic
-        if results_data['locations'] is not None and results_data['features'] is not None:
+        if results_data.get('locations') is not None and results_data.get('features') is not None:
             # Use uploaded data
             locations = results_data['locations']
             features = results_data['features']
-            risk_labels = results_data['risk_labels']
-            print(f"[{job_id}] Using uploaded sensor data: {locations.shape[0]} locations, {features.shape[1]} features")
+            risk_labels = results_data.get('risk_labels')
+
+            # Generate risk labels if not provided
+            if risk_labels is None:
+                from .data_generation import generate_synthetic_risk_labels
+                gas_ranges = Config.GAS_RANGES
+                num_gas_cols = min(features.shape[1] - 2, 4)
+                gas_data = features[:, :num_gas_cols].reshape(features.shape[0], 1, num_gas_cols)
+                risk_labels = generate_synthetic_risk_labels(gas_data, locations, gas_ranges)
+                print(f"[{job_id}] Generated risk labels from uploaded features")
+
+            print(f"[{job_id}] Using uploaded data: {locations.shape[0]} locations, {features.shape[1]} features")
         else:
             # Generate synthetic data
             locations, features, risk_labels = generate_synthetic_dataset(
