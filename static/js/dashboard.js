@@ -243,14 +243,15 @@ function connectToProgressStream(jobId) {
             const progress = JSON.parse(e.data);
             updateProgressUI(progress);
 
-            if (progress.status === 'completed') {
+            // Check for completion using 'event' field from backend
+            if (progress.event === 'completed') {
                 eventSource.close();
                 eventSource = null;
                 loadResults();
-            } else if (progress.status === 'error' || progress.status === 'cancelled') {
+            } else if (progress.event === 'error') {
                 eventSource.close();
                 eventSource = null;
-                showError(progress.status === 'error' ? 'Training Error' : 'Training Cancelled', progress.message);
+                showError('Training Error', progress.error || 'Unknown error occurred');
                 resetButtons();
             }
         } catch (error) {
@@ -267,6 +268,11 @@ function connectToProgressStream(jobId) {
 }
 
 function updateProgressUI(progress) {
+    // Skip UI update for completion/error events - they're handled by main listener
+    if (progress.event === 'completed' || progress.event === 'error') {
+        return;
+    }
+
     // FIX: Use correct field names from backend and add fallbacks for missing fields
     const totalEpochs = progress.total_epochs || progress.num_epochs || progress.epoch || 1;
     const epoch = progress.epoch || 0;
