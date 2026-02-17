@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriGraph AI - Technical Documentation</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Highlight.js for code syntax -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        .doc-nav {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 250px;
+            height: calc(100vh - 80px);
+            background: white;
+            border-right: 1px solid #ddd;
+            padding: 1rem;
+            overflow-y: auto;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.05);
+        }
+        .doc-nav a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: #666;
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            margin: 0.25rem 0;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .doc-nav a:hover, .doc-nav a.active {
+            color: #667eea;
+            background: #f0f0f0;
+            border-left-color: #667eea;
+        }
+        .doc-content {
+            margin-left: 250px;
+            padding: 2rem;
+            background: white;
+            min-height: 100vh;
+        }
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .section h2 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .section h3 {
+            color: #764ba2;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 1rem 0;
+        }
+        .code-block code {
+            color: #d4d4d4;
+        }
+        .endpoint {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #667eea;
+        }
+        .endpoint-method {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+        .method-get { background: #61affe; color: white; }
+        .method-post { background: #49cc90; color: white; }
+        .endpoint-path {
+            font-family: 'Courier New', monospace;
+            background: #f0f0f0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            color: #d63384;
+        }
+        .architecture-diagram {
+            background: white;
+            padding: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: monospace;
+            white-space: pre;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        .feature-card h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        .badge-tech {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            margin: 0.2rem;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #667eea;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            z-index: 99;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        .back-to-top:hover {
+            background: #764ba2;
+        }
+        @media (max-width: 768px) {
+            .doc-nav {
+                display: none;
+            }
+            .doc-content {
+                margin-left: 0;
+            }
+            .section {
+                padding: 1.5rem;
+            }
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        table th {
+            background: #667eea;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark bg-gradient sticky-top shadow-sm">
+        <div class="container-fluid">
+            <a href="/" class="navbar-brand mb-0 h1">
+                <i class="bi bi-graph-up"></i> AgriGraph AI
+            </a>
+            <a href="/" class="btn btn-outline-light btn-sm">
+                <i class="bi bi-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <!-- Sidebar Navigation -->
+    <div class="doc-nav">
+        <h6 class="text-muted mb-3">Documentation</h6>
+        <a href="#overview" class="nav-link-doc">Overview</a>
+        <a href="#tech-stack" class="nav-link-doc">Tech Stack</a>
+        <a href="#architecture" class="nav-link-doc">Architecture</a>
+        <a href="#components" class="nav-link-doc">Components</a>
+        <a href="#data-flow" class="nav-link-doc">Data Flow</a>
+        <a href="#api-endpoints" class="nav-link-doc">API Endpoints</a>
+        <a href="#implementation" class="nav-link-doc">Implementation</a>
+        <a href="#file-structure" class="nav-link-doc">File Structure</a>
+        <a href="#robustness" class="nav-link-doc">Robustness</a>
+        <a href="#deployment" class="nav-link-doc">Getting Started</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="doc-content">
+
+        <!-- Overview Section -->
+        <div class="section" id="overview">
+            <h2><i class="bi bi-info-circle"></i> System Overview</h2>
+            <p><strong>AgriGraph AI</strong> is a Science Fair 2025 project that compares how different AI models provide recommendations to farmers based on soil sensor data analysis.</p>
+
+            <h3>Problem Statement</h3>
+            <p>Traditional soil quality assessment relies on expensive lab analysis and manual interpretation. This system:</p>
+            <ul>
+                <li>Analyzes soil gas concentrations (NH₃, CH₄, NO₂, CO) across a field</li>
+                <li>Uses Graph Neural Networks (GNNs) to identify risk patterns</li>
+                <li>Compares recommendations from OpenAI GPT-4 and Anthropic Claude</li>
+                <li>Demonstrates how different LLMs approach the same agricultural problem</li>
+            </ul>
+
+            <h3>Core Features</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4><i class="bi bi-diagram-3"></i> Graph Neural Networks</h4>
+                    <p>GCN model currently implemented, extensible for GAT and GraphSAGE</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="bi bi-robot"></i> LLM Comparison</h4>
+                    <p>Compare OpenAI GPT-4 and Anthropic Claude recommendations side-by-side</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="bi bi-upload"></i> Data Import</h4>
+                    <p>Upload CSV/Excel sensor data with flexible column detection</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="bi bi-bar-chart"></i> Visualization</h4>
+                    <p>Interactive field maps, risk heatmaps, and training progress</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack Section -->
+        <div class="section" id="tech-stack">
+            <h2><i class="bi bi-lightning"></i> Technical Stack</h2>
+
+            <h3>Backend</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <strong>PyTorch</strong><br>
+                    Deep learning framework for GCN model training
+                    <br><span class="badge-tech">v2.0.0+</span>
+                </div>
+                <div class="feature-card">
+                    <strong>PyTorch Geometric</strong><br>
+                    Graph neural network library for GCN, GAT, GraphSAGE
+                    <br><span class="badge-tech">v2.3.0+</span>
+                </div>
+                <div class="feature-card">
+                    <strong>Flask</strong><br>
+                    Lightweight web framework for REST API and dashboard
+                    <br><span class="badge-tech">v2.3.0+</span>
+                </div>
+                <div class="feature-card">
+                    <strong>NumPy / Pandas</strong><br>
+                    Data processing and feature engineering
+                    <br><span class="badge-tech">Latest</span>
+                </div>
+                <div class="feature-card">
+                    <strong>Scikit-learn</strong><br>
+                    Metrics calculation (R², MSE, MAE) and data utilities
+                    <br><span class="badge-tech">v1.3.0+</span>
+                </div>
+                <div class="feature-card">
+                    <strong>OpenAI & Anthropic SDKs</strong><br>
+                    API clients for GPT-4 and Claude model access
+                    <br><span class="badge-tech">Latest</span>
+                </div>
+            </div>
+
+            <h3>Frontend</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <strong>Bootstrap 5</strong><br>
+                    Responsive CSS framework for UI design
+                </div>
+                <div class="feature-card">
+                    <strong>Plotly.js</strong><br>
+                    Interactive charts (scatter plots, heatmaps, line charts)
+                </div>
+                <div class="feature-card">
+                    <strong>Vanilla JavaScript</strong><br>
+                    No framework - lightweight and fast
+                </div>
+            </div>
+
+            <h3>Infrastructure</h3>
+            <ul>
+                <li><strong>Python 3.9+</strong> - Server runtime</li>
+                <li><strong>Server-Sent Events (SSE)</strong> - Real-time progress streaming</li>
+                <li><strong>Threading</strong> - Asynchronous training jobs</li>
+                <li><strong>Environment Variables</strong> - API key management</li>
+            </ul>
+        </div>
+
+        <!-- Architecture Section -->
+        <div class="section" id="architecture">
+            <h2><i class="bi bi-building"></i> System Architecture</h2>
+
+            <h3>High-Level Overview</h3>
+            <div class="architecture-diagram">Data Input (CSV/Synthetic)
+    ↓
+Graph Construction (KNN-based)
+    ↓
+GCN Model Training (GNN)
+    ↓
+Risk Prediction & Alerts
+    ↓
+LLM Analysis (GPT-4 + Claude)
+    ↓
+Side-by-Side Comparison UI
+            </div>
+
+            <h3>Component Interaction</h3>
+            <div class="architecture-diagram">┌─────────────────────────────────────────────────────────┐
+│ Frontend (Dashboard)                                    │
+│ - Data Upload Form                                     │
+│ - Training Controls                                    │
+│ - Real-time Progress (SSE)                             │
+│ - Visualizations (Plotly)                              │
+│ - LLM Recommendations                                  │
+└──────────────────────┬──────────────────────────────────┘
+                       │ HTTP Requests
+                       ↓
+┌─────────────────────────────────────────────────────────┐
+│ Flask Web Server                                        │
+├─────────────────────────────────────────────────────────┤
+│ Routes:                                                 │
+│ - POST /api/run_analysis                               │
+│ - GET /api/training/progress/&lt;job_id&gt;                  │
+│ - POST /api/cancel_training                            │
+│ - POST /api/upload_csv                                 │
+│ - POST /api/llm_recommendations                        │
+│ - POST /api/seed/generate                              │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+        ┌──────────────┼──────────────┐
+        ↓              ↓              ↓
+    ┌────────┐    ┌─────────┐  ┌──────────┐
+    │  Data  │    │ GCN     │  │   LLM    │
+    │Manager │    │Training │  │  APIs    │
+    └────────┘    └─────────┘  └──────────┘
+            </div>
+
+            <h3>Module Responsibilities</h3>
+            <table>
+                <tr>
+                    <th>Module</th>
+                    <th>Purpose</th>
+                    <th>Key Classes/Functions</th>
+                </tr>
+                <tr>
+                    <td><code>data_generation.py</code></td>
+                    <td>Create synthetic soil sensor data</td>
+                    <td><code>generate_synthetic_dataset()</code></td>
+                </tr>
+                <tr>
+                    <td><code>csv_loader.py</code></td>
+                    <td>Load & parse CSV/Excel files</td>
+                    <td><code>load_sensor_data()</code>, <code>validate_csv_format()</code></td>
+                </tr>
+                <tr>
+                    <td><code>graph_construction.py</code></td>
+                    <td>Build graph from node features</td>
+                    <td><code>construct_graph()</code></td>
+                </tr>
+                <tr>
+                    <td><code>model.py</code></td>
+                    <td>GCN neural network architecture</td>
+                    <td><code>AgriGraphGCN</code>, <code>EarlyStopping</code></td>
+                </tr>
+                <tr>
+                    <td><code>training.py</code></td>
+                    <td>Training loop with validation</td>
+                    <td><code>train_model()</code>, <code>train_epoch()</code>, <code>evaluate()</code></td>
+                </tr>
+                <tr>
+                    <td><code>interpretation.py</code></td>
+                    <td>Generate alerts from predictions</td>
+                    <td><code>generate_alerts()</code>, <code>Alert</code> dataclass</td>
+                </tr>
+                <tr>
+                    <td><code>llm_recommendations.py</code></td>
+                    <td>LLM API integration</td>
+                    <td><code>compare_llm_recommendations()</code>, <code>validate_alerts()</code></td>
+                </tr>
+                <tr>
+                    <td><code>seed_manager.py</code></td>
+                    <td>Reproducible/random seed management</td>
+                    <td><code>SeedManager</code> (auto/fixed/custom modes)</td>
+                </tr>
+                <tr>
+                    <td><code>progress_manager.py</code></td>
+                    <td>Async job tracking & SSE streaming</td>
+                    <td><code>ProgressManager</code>, job queue management</td>
+                </tr>
+                <tr>
+                    <td><code>web_app.py</code></td>
+                    <td>Flask server & API endpoints</td>
+                    <td>All routes, request handlers</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Core Components Section -->
+        <div class="section" id="components">
+            <h2><i class="bi bi-puzzle"></i> Core Components</h2>
+
+            <h3>1. GCN Model Architecture</h3>
+            <p>Graph Convolutional Network for node-level risk prediction.</p>
+            <div class="code-block">
+<pre>AgriGraphGCN(
+    input_dim=6,        # [NH3, CH4, NO2, CO, x, y]
+    hidden_dim=128,     # Hidden layer size
+    num_layers=3,       # GCN layers
+    dropout=0.3,        # Dropout rate
+    output_dim=1        # Single risk score
+)
+
+Forward Pass:
+  Input Features (N×6) → GCN Layer 1 → ReLU → Dropout
+                      → GCN Layer 2 → ReLU → Dropout
+                      → GCN Layer 3 → Output (N×1)</pre>
+            </div>
+            <p><strong>Features:</strong></p>
+            <ul>
+                <li>Layer normalization for stable training</li>
+                <li>Early stopping to prevent overfitting</li>
+                <li>Batch norm with LayerNorm (works with any batch size)</li>
+            </ul>
+
+            <h3>2. Data Pipeline</h3>
+            <p><strong>Synthetic Data Generation:</strong></p>
+            <ul>
+                <li>Creates 50-100 sensor locations in a field</li>
+                <li>Generates gas concentrations with spatial correlations</li>
+                <li>Computes risk labels based on gas patterns</li>
+                <li>Supports seeded (reproducible) or random generation</li>
+            </ul>
+
+            <p><strong>CSV Upload Processing:</strong></p>
+            <ul>
+                <li>Auto-detects coordinate columns (x/y, lat/lon, etc.)</li>
+                <li>Auto-detects gas columns (NH3, CH4, NO2, CO with aliases)</li>
+                <li>Handles missing values (fills with column median)</li>
+                <li>Normalizes coordinates to 0-100 range</li>
+                <li>Generates synthetic coordinates if none provided</li>
+            </ul>
+
+            <h3>3. Graph Construction</h3>
+            <p>Builds a K-NN graph from sensor locations.</p>
+            <div class="code-block">
+<pre>construct_graph(locations, features, risk_labels,
+                 method='knn', k=5, use_distance_weights=True)
+
+Output: PyTorch Geometric Data object
+  - data.x: Node features (N × 6)
+  - data.edge_index: KNN edges (2 × num_edges)
+  - data.y: Risk labels (N,)
+  - data.edge_weight: Distance-based weights (optional)</pre>
+            </div>
+
+            <h3>4. Risk Alerts Generation</h3>
+            <p>Converts model predictions into actionable alerts.</p>
+            <ul>
+                <li><strong>Critical</strong> (risk > 0.8) - Immediate action required</li>
+                <li><strong>High</strong> (0.6 < risk ≤ 0.8) - Important to address</li>
+                <li><strong>Medium</strong> (0.4 < risk ≤ 0.6) - Monitor and improve</li>
+                <li><strong>Low</strong> (risk ≤ 0.4) - Good conditions</li>
+            </ul>
+
+            <h3>5. LLM Integration</h3>
+            <p>Sends alerts to OpenAI GPT-4 and Anthropic Claude.</p>
+            <div class="code-block">
+<pre>compare_llm_recommendations(alerts, field_stats)
+  1. Validate alert data (check required fields)
+  2. Generate detailed analysis prompt
+  3. Call GPT-4 API (timeout: 30s)
+  4. Call Claude API (in parallel)
+  5. Format & return both responses
+
+Robustness Features:
+  - Specific exception handling (auth, rate limit, timeout)
+  - Data validation before expensive API calls
+  - 5-second debouncing to prevent rate limits</pre>
+            </div>
+
+            <h3>6. Seed Management System</h3>
+            <p>Provides flexible control over randomization.</p>
+            <div class="code-block">
+<pre>Three Modes:
+  - 'auto': Unique seed per run (timestamp + PID)
+              → Different data every time
+  - 'fixed': Constant seed 42
+              → Same data every run (reproducible)
+  - 'custom': User-provided seed value
+              → Reproducible with custom value</pre>
+            </div>
+        </div>
+
+        <!-- Data Flow Section -->
+        <div class="section" id="data-flow">
+            <h2><i class="bi bi-flow-chart"></i> Complete Data Flow</h2>
+
+            <h3>Scenario 1: Synthetic Data Analysis</h3>
+            <div class="architecture-diagram">User clicks "Train New Model"
+         ↓
+POST /api/run_analysis
+  ├─ Create training job (get job_id)
+  ├─ Generate synthetic data (seed_manager)
+  │  └─ 50-100 random sensor locations
+  │  └─ Gas concentrations with spatial patterns
+  │  └─ Risk labels computed from gas values
+  └─ Start async training thread
+         ↓
+Training Thread:
+  ├─ Construct KNN graph from locations
+  ├─ Initialize GCN model (6→128→128→1)
+  ├─ Train for up to 100 epochs
+  │  ├─ Epoch progress sent via /api/training/progress/{job_id}
+  │  ├─ SSE streams updates to frontend (epoch, loss, R²)
+  │  └─ Early stopping if validation doesn't improve
+  ├─ Generate predictions on full dataset
+  └─ Create alerts (critical/high/medium/low)
+         ↓
+Results Stored in results_data:
+  - locations, features, predictions
+  - model, history, test_metrics
+  - alerts (list of Alert objects)
+         ↓
+Frontend receives completion event
+  ├─ Display field map with risk heatmap
+  ├─ Display alerts table (sortable/filterable)
+  ├─ Show training metrics (R², MSE, MAE)
+  └─ Enable LLM recommendation button
+            </div>
+
+            <h3>Scenario 2: CSV Upload Analysis</h3>
+            <div class="architecture-diagram">User selects CSV file and clicks "Upload"
+         ↓
+POST /api/upload_csv
+  ├─ Validate file type (csv/xlsx/xls)
+  ├─ Load file with pandas
+  ├─ Auto-detect columns:
+  │  ├─ Coordinates (x/y, lat/lon)
+  │  ├─ Gases (NH3, CH4, NO2, CO)
+  │  └─ Risk labels (if provided)
+  ├─ Handle missing values (fill with median)
+  ├─ Normalize coordinates to 0-100
+  └─ Store in results_data['locations/features/risk_labels']
+         ↓
+Results stored for next analysis
+         ↓
+User clicks "Train New Model"
+  ├─ Check if uploaded data exists
+  ├─ If yes: Use CSV data instead of synthetic
+  ├─ If no: Generate synthetic data
+  └─ Continue with training (same as Scenario 1)
+            </div>
+
+            <h3>Scenario 3: LLM Comparison</h3>
+            <div class="architecture-diagram">User clicks "Generate Recommendations"
+         ↓
+POST /api/llm_recommendations
+  ├─ Check if alerts exist
+  ├─ Validate alerts (required fields, numeric types)
+  └─ Generate analysis prompt:
+      "You are an agricultural advisor...
+       Detected soil issues at locations:
+       - (x=10, y=20): CRITICAL - NH3 at 500 ppm
+       - (x=30, y=40): HIGH - CH4 at 300 ppm
+       ..."
+         ↓
+Parallel API Calls (with debounce):
+  ├─ POST https://api.openai.com/v1/chat/completions
+  │  ├─ Model: gpt-4
+  │  ├─ Timeout: 30 seconds
+  │  ├─ Max tokens: 1500
+  │  └─ Returns: recommendation text
+  │
+  └─ POST https://api.anthropic.com/v1/messages
+     ├─ Model: claude-opus-4-1
+     ├─ Max tokens: 1500
+     └─ Returns: recommendation text
+         ↓
+Format Responses:
+  ├─ Escape HTML characters
+  ├─ Preserve line breaks
+  └─ Add metadata (tokens used, model name)
+         ↓
+Return JSON with both recommendations
+         ↓
+Frontend displays side-by-side:
+  ├─ Left panel: GPT-4 response
+  └─ Right panel: Claude response
+            </div>
+        </div>
+
+        <!-- API Endpoints Section -->
+        <div class="section" id="api-endpoints">
+            <h2><i class="bi bi-code-square"></i> API Endpoints</h2>
+
+            <div class="endpoint">
+                <span class="endpoint-method method-post">POST</span>
+                <span class="endpoint-path">/api/run_analysis</span>
+                <p class="mt-2">Start a new training job asynchronously.</p>
+                <p><strong>Request Body:</strong></p>
+                <div class="code-block">
+<pre>{
+  "use_pretrained": false,  // Use pre-trained model if exists
+  "seed_mode": "auto",       // "auto", "fixed", or "custom"
+  "custom_seed": null        // Required if seed_mode="custom"
+}</pre>
+                </div>
+                <p><strong>Response:</strong></p>
+                <div class="code-block">
+<pre>{
+  "success": true,
+  "job_id": "a1b2c3d4-e5f6-...",
+  "message": "Training started"
+}</pre>
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="endpoint-method method-get">GET</span>
+                <span class="endpoint-path">/api/training/progress/&lt;job_id&gt;</span>
+                <p class="mt-2">Stream training progress via Server-Sent Events.</p>
+                <p><strong>Response (SSE Stream):</strong></p>
+                <div class="code-block">
+<pre>data: {"epoch": 1, "num_epochs": 100, "train_loss": 0.456, "progress": 1.0, "metrics": {"r2": 0.45, "eta_seconds": 2400}}
+
+data: {"epoch": 2, "num_epochs": 100, "train_loss": 0.412, "progress": 2.0, ...}
+
+data: {"event": "completed", "result": {"test_metrics": {...}}}</pre>
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="endpoint-method method-post">POST</span>
+                <span class="endpoint-path">/api/cancel_training</span>
+                <p class="mt-2">Cancel a running training job.</p>
+                <p><strong>Request Body:</strong></p>
+                <div class="code-block">
+<pre>{"job_id": "a1b2c3d4-e5f6-..."}</pre>
+                </div>
+                <p><strong>Response:</strong></p>
+                <div class="code-block">
+<pre>{"success": true, "message": "Training cancellation requested"}</pre>
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="endpoint-method method-post">POST</span>
+                <span class="endpoint-path">/api/upload_csv</span>
+                <p class="mt-2">Upload CSV/Excel sensor data.</p>
+                <p><strong>Request:</strong> multipart/form-data with file field</p>
+                <p><strong>Response:</strong></p>
+                <div class="code-block">
+<pre>{
+  "success": true,
+  "validation": {
+    "valid": true,
+    "num_rows": 42,
+    "columns": ["x", "y", "nh3", "ch4", "no2", "co"],
+    "has_coordinates": true,
+    "has_gases": true,
+    "gases_found": ["NH3", "CH4", "NO2", "CO"]
+  }
+}</pre>
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="endpoint-method method-post">POST</span>
+                <span class="endpoint-path">/api/llm_recommendations</span>
+                <p class="mt-2">Generate and compare LLM recommendations (GPT-4 + Claude).</p>
+                <p><strong>Request Body:</strong> {} (uses stored results)</p>
+                <p><strong>Response:</strong></p>
+                <div class="code-block">
+<pre>{
+  "success": true,
+  "comparison": {
+    "prompt": "You are an agricultural advisor...",
+    "gpt4": {
+      "success": true,
+      "provider": "OpenAI GPT-4",
+      "model": "gpt-4",
+      "recommendation": "Based on your soil analysis...",
+      "tokens_used": 847
+    },
+    "claude": {
+      "success": true,
+      "provider": "Anthropic Claude",
+      "model": "claude-opus-4-1",
+      "recommendation": "The soil analysis indicates...",
+      "tokens_used": 923
+    },
+    "timestamp": "2024-02-16T10:30:45.123Z"
+  }
+}</pre>
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="endpoint-method method-post">POST</span>
+                <span class="endpoint-path">/api/seed/generate</span>
+                <p class="mt-2">Generate a new random seed.</p>
+                <p><strong>Request Body:</strong></p>
+                <div class="code-block">
+<pre>{
+  "seed_mode": "auto"  // or "fixed"/"custom"
+}</pre>
+                </div>
+                <p><strong>Response:</strong></p>
+                <div class="code-block">
+<pre>{"seed": 1847562930}</pre>
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="endpoint-method method-post">POST</span>
+                <span class="endpoint-path">/api/gnn_graph</span>
+                <p class="mt-2">Get graph structure for visualization.</p>
+                <p><strong>Response:</strong></p>
+                <div class="code-block">
+<pre>{
+  "nodes": [
+    {"id": 0, "x": 10.5, "y": 20.3, "risk": 0.85, "label": "critical"},
+    {"id": 1, "x": 30.2, "y": 45.1, "risk": 0.42, "label": "medium"},
+    ...
+  ],
+  "edges": [
+    {"source": 0, "target": 1},
+    {"source": 0, "target": 3},
+    ...
+  ]
+}</pre>
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="endpoint-method method-get">GET</span>
+                <span class="endpoint-path">/api/check_model</span>
+                <p class="mt-2">Check if pre-trained model exists.</p>
+                <p><strong>Response:</strong></p>
+                <div class="code-block">
+<pre>{"model_exists": true}</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Details Section -->
+        <div class="section" id="implementation">
+            <h2><i class="bi bi-code-slash"></i> Implementation Details</h2>
+
+            <h3>Asynchronous Training Architecture</h3>
+            <p>Training happens in a background thread to prevent blocking the UI.</p>
+            <div class="code-block">
+<pre>Main Thread (Flask):
+  └─ POST /api/run_analysis
+     ├─ Create job_id (UUID)
+     ├─ Create ProgressManager job
+     └─ Start background thread
+     └─ Return immediately (job_id to client)
+
+Background Thread:
+  ├─ Data loading/generation
+  ├─ Graph construction
+  ├─ Model training (epochs)
+  │  └─ After each epoch:
+  │     └─ progress_manager.update_progress()
+  │        └─ Puts update in job queue
+  ├─ Prediction generation
+  ├─ Alert creation
+  └─ progress_manager.complete_job() or fail_job()
+
+Client (JavaScript):
+  ├─ After run_analysis, connect EventSource
+  ├─ GET /api/training/progress/{job_id}
+  │  └─ Server reads from job queue
+  │  └─ Sends updates as SSE events
+  ├─ Display progress bar + metrics
+  └─ When 'completed' event received, fetch results</pre>
+            </div>
+
+            <h3>CSV Data Handling</h3>
+            <p>Flexible column detection handles various data formats:</p>
+            <div class="code-block">
+<pre>Column Detection Strategy:
+1. Normalize all column names (lowercase, replace spaces)
+2. Look for coordinate columns:
+   - x: ["x", "x_coord", "x_coordinate", "easting", "col"]
+   - y: ["y", "y_coord", "y_coordinate", "northing", "row"]
+   - OR: lon/lat with 20+ aliases
+3. Look for gas columns:
+   - NH3: ["nh3", "ammonia", "nh3_ppm", "ammonia_concentration"]
+   - CH4: ["ch4", "methane", "ch4_ppm", "methane_concentration"]
+   - NO2: ["no2", "nitrogen_dioxide", "no2_ppm"]
+   - CO: ["co", "carbon_monoxide", "co_ppm"]
+4. Use any remaining numeric columns as features
+5. If coordinates missing: generate grid layout
+6. Normalize coordinates to 0-100 range
+7. Fill NaN values with column median</pre>
+            </div>
+
+            <h3>Error Handling Strategy</h3>
+            <table>
+                <tr>
+                    <th>Error Type</th>
+                    <th>Detection</th>
+                    <th>Response</th>
+                </tr>
+                <tr>
+                    <td>Missing API Key</td>
+                    <td>os.getenv() returns None</td>
+                    <td>Return error to UI, suggest .env setup</td>
+                </tr>
+                <tr>
+                    <td>API Timeout</td>
+                    <td>Request exceeds 30 seconds</td>
+                    <td>Catch Timeout exception, return friendly message</td>
+                </tr>
+                <tr>
+                    <td>Rate Limit</td>
+                    <td>API returns 429 status</td>
+                    <td>Catch RateLimitError, show "try again later"</td>
+                </tr>
+                <tr>
+                    <td>Invalid Alert Data</td>
+                    <td>validate_alerts() checks fields</td>
+                    <td>Prevent LLM call, return validation error</td>
+                </tr>
+                <tr>
+                    <td>CSV Parse Error</td>
+                    <td>pd.read_csv() fails</td>
+                    <td>Try different encodings/separators</td>
+                </tr>
+                <tr>
+                    <td>GPU Not Available</td>
+                    <td>torch.cuda.is_available() returns False</td>
+                    <td>Fall back to CPU (slower but works)</td>
+                </tr>
+            </table>
+
+            <h3>Training Loop Details</h3>
+            <div class="code-block">
+<pre>for epoch in range(1, num_epochs + 1):
+    # Check for cancellation request
+    if progress_manager.is_cancelled(job_id):
+        break
+
+    # Train for one epoch
+    train_loss = train_epoch(model, data, optimizer, criterion, train_mask)
+
+    # Validate on validation set
+    with torch.no_grad():
+        predictions = model(data.x, data.edge_index)
+        val_loss = criterion(predictions[val_mask], data.y[val_mask])
+
+    # Calculate metrics
+    val_r2 = r2_score(data.y[val_mask].cpu().numpy(),
+                      predictions[val_mask].cpu().numpy())
+
+    # Update progress
+    progress_manager.update_progress(
+        job_id, epoch, train_loss, val_loss,
+        metrics={'r2': val_r2, 'eta_seconds': eta_seconds}
+    )
+
+    # Early stopping check
+    if early_stopping(val_loss):
+        break
+
+    # LR scheduling (optional)
+    scheduler.step(val_loss)</pre>
+            </div>
+
+            <h3>LLM Request Validation</h3>
+            <div class="code-block">
+<pre>def validate_alerts(alerts):
+    """Ensure alerts have all required fields before LLM call."""
+    required_fields = [
+        'x', 'y', 'risk_level', 'risk_score',
+        'primary_gas', 'primary_gas_concentration'
+    ]
+
+    for i, alert in enumerate(alerts):
+        # Check field existence
+        for field in required_fields:
+            if field not in alert:
+                return False, f"Alert {i} missing {field}"
+
+        # Check field types
+        numeric_fields = ['x', 'y', 'risk_score', 'primary_gas_concentration']
+        for field in numeric_fields:
+            try:
+                float(alert[field])
+            except (ValueError, TypeError):
+                return False, f"Alert {i} field '{field}' not numeric"
+
+    return True, ""</pre>
+            </div>
+        </div>
+
+        <!-- File Structure Section -->
+        <div class="section" id="file-structure">
+            <h2><i class="bi bi-file-earmark-code"></i> File Structure</h2>
+            <div class="code-block">
+<pre>sciencefair2025/
+├── agrigraph_ai/                    # Main package
+│   ├── __init__.py
+│   ├── config.py                    # Configuration constants
+│   ├── seed_manager.py              # Reproducible/random seed management
+│   ├── progress_manager.py          # Training job tracking & SSE
+│   ├── data_generation.py           # Synthetic dataset creation
+│   ├── csv_loader.py                # CSV/Excel file loading
+│   ├── graph_construction.py        # KNN graph building
+│   ├── model.py                     # GCN model architecture
+│   ├── training.py                  # Training loop & evaluation
+│   ├── interpretation.py            # Alert generation
+│   ├── visualization.py             # Legacy visualization helpers
+│   ├── llm_recommendations.py       # LLM API integration
+│   ├── web_app.py                   # Flask server & routes
+│   └── database.py                  # (Optional) Database utilities
+├── templates/
+│   ├── dashboard.html               # Main UI
+│   └── about.html                   # This documentation page
+├── static/
+│   ├── js/
+│   │   └── dashboard.js             # Frontend logic
+│   └── css/
+│       └── dashboard.css            # Styling
+├── requirements.txt                 # Python dependencies
+├── .env.example                     # API key template
+├── .env                             # API keys (git ignored)
+├── start_dashboard.py               # Entry point
+└── README.md                        # Project overview</pre>
+            </div>
+
+            <h3>Configuration (config.py)</h3>
+            <div class="code-block">
+<pre>class Config:
+    # Data generation
+    NUM_NODES = 50                  # Sensor locations
+    FIELD_WIDTH = 100               # Field dimensions
+    FIELD_HEIGHT = 100
+    NUM_TIMESTEPS = 1
+
+    # Gas ranges (for synthetic data)
+    GAS_RANGES = {
+        'NH3': (0, 100),            # Ammonia ppm
+        'CH4': (0, 50),             # Methane ppm
+        'NO2': (0, 1),              # Nitrogen dioxide ppm
+        'CO': (0, 10)               # Carbon monoxide ppm
+    }
+
+    # Risk thresholds for alert generation
+    RISK_THRESHOLDS = {
+        'critical': 0.8,
+        'high': 0.6,
+        'medium': 0.4
+    }
+
+    # Model hyperparameters
+    HIDDEN_DIM = 128
+    NUM_LAYERS = 3
+    DROPOUT = 0.3
+
+    # Training parameters
+    NUM_EPOCHS = 100
+    LEARNING_RATE = 0.01
+    EARLY_STOPPING_PATIENCE = 20
+    EARLY_STOPPING_MIN_DELTA = 1e-4
+
+    # Data splits
+    TRAIN_SPLIT = 0.7
+    VAL_SPLIT = 0.15
+    TEST_SPLIT = 0.15
+
+    # Graph construction
+    K_NEIGHBORS = 5
+    USE_DISTANCE_WEIGHTS = True</pre>
+            </div>
+        </div>
+
+        <!-- Robustness Section -->
+        <div class="section" id="robustness">
+            <h2><i class="bi bi-shield-check"></i> Robustness & Reliability</h2>
+
+            <h3>1. Request Debouncing</h3>
+            <p>Prevents accidental rapid API calls from wasting credits.</p>
+            <div class="code-block">
+<pre>// Frontend (dashboard.js)
+const MIN_LLM_REQUEST_INTERVAL = 5000; // 5 seconds
+let lastLLMRequestTime = 0;
+
+function generateLLMRecommendations() {
+    const now = Date.now();
+    if (now - lastLLMRequestTime < MIN_LLM_REQUEST_INTERVAL) {
+        const waitTime = Math.ceil((MIN_LLM_REQUEST_INTERVAL -
+                                   (now - lastLLMRequestTime)) / 1000);
+        showError('Rate Limited',
+                  `Please wait ${waitTime}s before generating new recommendations`);
+        return;
+    }
+    lastLLMRequestTime = now;
+    // ... continue with API call
+}</pre>
+            </div>
+
+            <h3>2. Data Validation</h3>
+            <p>Validates data before expensive LLM API calls.</p>
+            <div class="code-block">
+<pre>// Backend (llm_recommendations.py)
+is_valid, error_msg = validate_alerts(alerts)
+if not is_valid:
+    return {
+        'success': False,
+        'error': f'Data validation failed: {error_msg}'
+    }
+
+# Only call LLM if data is valid
+gpt_result = get_openai_recommendation(prompt)</pre>
+            </div>
+
+            <h3>3. Timeout Protection</h3>
+            <p>API calls have maximum wait times to prevent hanging.</p>
+            <div class="code-block">
+<pre>// OpenAI API call with 30-second timeout
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[...],
+    timeout=30.0  # seconds
+)</pre>
+            </div>
+
+            <h3>4. Specific Exception Handling</h3>
+            <p>Different error types are handled appropriately.</p>
+            <div class="code-block">
+<pre>try:
+    response = openai.ChatCompletion.create(...)
+except AuthenticationError:
+    # Invalid API key
+    return {'error': 'Invalid API key in .env'}
+except RateLimitError:
+    # Hit quota
+    return {'error': 'Rate limited. Try again later.'}
+except APIError as e:
+    # Other API errors
+    return {'error': f'OpenAI API error: {str(e)}'}
+except Timeout:
+    # Request took too long
+    return {'error': 'Request timed out'}
+except Exception as e:
+    # Unexpected errors
+    return {'error': f'Unexpected error: {str(e)}'}</pre>
+            </div>
+
+            <h3>5. Training Job Cancellation</h3>
+            <p>Users can cancel long-running training.</p>
+            <div class="code-block">
+<pre>// Frontend button
+document.getElementById('cancelBtn').addEventListener('click', function() {
+    fetch('/api/cancel_training', {
+        method: 'POST',
+        body: JSON.stringify({job_id: currentJobId})
+    });
+});
+
+// Backend checks during training
+for epoch in range(num_epochs):
+    if progress_manager.is_cancelled(job_id):
+        # Exit training loop cleanly
+        break</pre>
+            </div>
+
+            <h3>6. Resource Cleanup</h3>
+            <p>Prevents memory leaks from completed jobs.</p>
+            <div class="code-block">
+<pre>// ProgressManager automatically cleans old jobs
+cleanup_old_jobs(max_age_seconds=3600)
+# Removes completed/failed jobs older than 1 hour</pre>
+            </div>
+
+            <h3>7. Thread-Safe Progress Tracking</h3>
+            <p>Multiple threads safely access shared state.</p>
+            <div class="code-block">
+<pre>class ProgressManager:
+    def __init__(self):
+        self.jobs = {}
+        self.lock = threading.Lock()  # Protects jobs dict
+
+    def update_progress(self, job_id, epoch, loss, ...):
+        with self.lock:  # Acquire lock
+            if job_id not in self.jobs:
+                return
+            job = self.jobs[job_id]
+            job['current_epoch'] = epoch
+            # ... safe update
+            # Release lock</pre>
+            </div>
+
+            <h3>8. Session Management</h3>
+            <p>Each user session has isolated seed storage.</p>
+            <div class="code-block">
+<pre>@app.route('/api/run_analysis', methods=['POST'])
+def run_analysis():
+    # Create unique session if doesn't exist
+    if 'session_id' not in session:
+        session['session_id'] = secrets.token_hex(16)
+
+    # Store seed in session-specific storage
+    seed_manager.store_session_seed(
+        session['session_id'],
+        random_seed
+    )</pre>
+            </div>
+        </div>
+
+        <!-- Getting Started Section -->
+        <div class="section" id="deployment">
+            <h2><i class="bi bi-rocket"></i> Getting Started Guide</h2>
+
+            <h3>1. Installation</h3>
+            <div class="code-block">
+<pre># Clone repository
+git clone <repo-url>
+cd sciencefair2025
+
+# Create virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt</pre>
+            </div>
+
+            <h3>2. API Keys Setup</h3>
+            <div class="code-block">
+<pre># Copy environment template
+cp .env.example .env
+
+# Edit .env and add your API keys
+# OPENAI_API_KEY=sk-...
+# ANTHROPIC_API_KEY=sk-ant-...</pre>
+            </div>
+
+            <h3>3. Start Server</h3>
+            <div class="code-block">
+<pre>python3 start_dashboard.py
+
+# Output:
+# ================================================================================
+# AgriGraph AI - Web Visualization Server
+# ================================================================================
+#
+# ✅ Starting server on http://127.0.0.1:5000
+# 🌐 Open your browser and navigate to: http://127.0.0.1:5000</pre>
+            </div>
+
+            <h3>4. Basic Usage</h3>
+            <h4>Option A: Synthetic Data</h4>
+            <ol>
+                <li>Open dashboard at http://localhost:5000</li>
+                <li>Adjust seed mode (auto/fixed/custom) if desired</li>
+                <li>Click "Train New Model"</li>
+                <li>Watch real-time progress in the progress bar</li>
+                <li>When complete, view results and alerts</li>
+                <li>Click "Generate Recommendations" to compare LLM responses</li>
+            </ol>
+
+            <h4>Option B: Upload CSV Data</h4>
+            <ol>
+                <li>Prepare CSV with columns: x, y, nh3, ch4, no2, co (or similar names)</li>
+                <li>Click "Upload CSV File"</li>
+                <li>Select your file and verify columns are detected</li>
+                <li>Click "Train New Model" to analyze your data</li>
+                <li>View field map and alerts specific to your data</li>
+            </ol>
+
+            <h3>5. CSV Format Examples</h3>
+            <h4>Minimal Format (required):</h4>
+            <div class="code-block">
+<pre>x,y,nh3,ch4,no2,co
+10.5,20.3,45.2,12.1,0.5,2.3
+15.2,25.1,52.3,8.4,0.3,1.8
+20.1,30.5,38.9,15.2,0.7,3.1</pre>
+            </div>
+
+            <h4>Full Format (with risk labels):</h4>
+            <div class="code-block">
+<pre>longitude,latitude,ammonia_ppm,methane_ppm,no2_ppm,co_ppm,risk_score
+10.5,20.3,45.2,12.1,0.5,2.3,0.75
+15.2,25.1,52.3,8.4,0.3,1.8,0.82
+20.1,30.5,38.9,15.2,0.7,3.1,0.45</pre>
+            </div>
+
+            <h3>6. Testing the System</h3>
+            <div class="code-block">
+<pre># 1. Synthetic data test (no API keys needed)
+- Click "Train New Model"
+- Wait ~2-5 minutes for training
+- View field map and alerts
+- (LLM recommendations require API keys)
+
+# 2. CSV upload test
+- Use sample data above
+- Verify columns detected
+- Train and observe results
+
+# 3. LLM comparison test (requires API keys)
+- Complete training
+- Click "Generate Recommendations"
+- Compare GPT-4 vs Claude responses
+- Check both provide actionable advice
+
+# 4. Cancellation test
+- Start training
+- Click "Cancel Training"
+- Verify stops gracefully</pre>
+            </div>
+
+            <h3>7. Troubleshooting</h3>
+            <table>
+                <tr>
+                    <th>Issue</th>
+                    <th>Cause</th>
+                    <th>Solution</th>
+                </tr>
+                <tr>
+                    <td>Port already in use</td>
+                    <td>Another process on port 5000</td>
+                    <td>Server auto-tries 5001, 5002. Or: kill process or wait</td>
+                </tr>
+                <tr>
+                    <td>ModuleNotFoundError</td>
+                    <td>Dependencies not installed</td>
+                    <td><code>pip install -r requirements.txt</code></td>
+                </tr>
+                <tr>
+                    <td>API key error in LLM</td>
+                    <td>.env file missing or incorrect</td>
+                    <td>Copy .env.example to .env, add your actual keys</td>
+                </tr>
+                <tr>
+                    <td>Training takes forever</td>
+                    <td>CPU is slow, no GPU</td>
+                    <td>Normal for CPU. Training completes, just slower. (~5-10 min)</td>
+                </tr>
+                <tr>
+                    <td>CSV upload fails</td>
+                    <td>Wrong file format or encoding</td>
+                    <td>Ensure CSV with numeric columns. Try UTF-8 encoding</td>
+                </tr>
+                <tr>
+                    <td>LLM recommendations empty</td>
+                    <td>API call failed</td>
+                    <td>Check .env keys. Check internet connection. Check OpenAI/Anthropic status</td>
+                </tr>
+                <tr>
+                    <td>Progress bar stuck</td>
+                    <td>SSE connection dropped</td>
+                    <td>Reload page. Check browser console for errors</td>
+                </tr>
+            </table>
+
+            <h3>8. Performance Optimization</h3>
+            <p><strong>For faster training:</strong></p>
+            <ul>
+                <li>Use GPU if available: <code>cuda_available = torch.cuda.is_available()</code></li>
+                <li>Reduce NUM_EPOCHS in config.py (default: 100)</li>
+                <li>Reduce NUM_NODES for synthetic data (default: 50)</li>
+                <li>Use fewer neighbors in KNN graph (default: 5)</li>
+            </ul>
+
+            <p><strong>For better accuracy:</strong></p>
+            <ul>
+                <li>Increase NUM_EPOCHS (trains longer)</li>
+                <li>Increase NUM_NODES (more sensor data)</li>
+                <li>Tune learning rate (currently 0.01)</li>
+                <li>Upload real sensor data instead of synthetic</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="section" style="text-align: center; border: none;">
+            <h3>Need Help?</h3>
+            <p>
+                <a href="/" class="btn btn-primary">
+                    <i class="bi bi-arrow-left"></i> Back to Dashboard
+                </a>
+            </p>
+            <p class="text-muted mt-3">
+                AgriGraph AI v1.0 | Science Fair 2025 | Created with Python, PyTorch & Flask
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#overview" class="back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Initialize code highlighting
+        document.querySelectorAll('code').forEach(block => {
+            hljs.highlightElement(block);
+        });
+
+        // Sidebar navigation active state
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link-doc');
+            const sections = document.querySelectorAll('[id]');
+
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
