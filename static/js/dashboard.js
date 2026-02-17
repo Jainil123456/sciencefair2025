@@ -190,6 +190,10 @@ async function runAnalysis(usePretrained) {
         console.log('Removing d-none from progressSection');
         progressSection.classList.remove('d-none');
         console.log('progressSection classList:', progressSection.classList);
+
+        // SCROLL TO SHOW PROGRESS BAR
+        console.log('Scrolling to progress section...');
+        progressSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
         console.error('ERROR: progressSection not found!');
     }
@@ -265,11 +269,14 @@ function connectToProgressStream(jobId) {
     // Close existing connection
     if (eventSource) eventSource.close();
 
+    console.log('Creating EventSource for job:', jobId);
     eventSource = new EventSource(`/api/training/progress/${jobId}`);
 
     eventSource.addEventListener('progress', (e) => {
         try {
+            console.log('SSE progress event received:', e.data.substring(0, 100));
             const progress = JSON.parse(e.data);
+            console.log('Parsed progress data:', progress);
             updateProgressUI(progress);
 
             // Check for completion using 'event' field from backend
@@ -288,7 +295,9 @@ function connectToProgressStream(jobId) {
         }
     });
 
-    eventSource.onerror = () => {
+    eventSource.onerror = (e) => {
+        console.error('SSE connection error:', e);
+        console.log('EventSource readyState:', eventSource?.readyState);
         eventSource.close();
         eventSource = null;
         showError('Connection Lost', 'SSE connection failed - training may continue in background');
@@ -297,8 +306,11 @@ function connectToProgressStream(jobId) {
 }
 
 function updateProgressUI(progress) {
+    console.log('updateProgressUI called with:', progress);
+
     // Skip UI update for completion/error events - they're handled by main listener
     if (progress.event === 'completed' || progress.event === 'error') {
+        console.log('Skipping UI update for completion/error event');
         return;
     }
 
@@ -311,7 +323,12 @@ function updateProgressUI(progress) {
     const percent = document.getElementById('progressPercent');
     const status = document.getElementById('progressStatus');
 
-    if (!bar || !percent || !status) return;
+    console.log('Progress bar elements:', { bar, percent, status });
+
+    if (!bar || !percent || !status) {
+        console.error('Missing progress bar elements!');
+        return;
+    }
 
     bar.style.width = pct + '%';
     percent.textContent = pct + '%';
