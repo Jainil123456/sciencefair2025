@@ -361,6 +361,7 @@ function cancelTraining() {
 // ============================================
 
 async function loadResults() {
+    console.log('=== LOADRESULTS FUNCTION STARTED ===');
     try {
         // Close EventSource if still connected
         if (eventSource) {
@@ -368,6 +369,7 @@ async function loadResults() {
             eventSource = null;
         }
 
+        console.log('Fetching results data...');
         // Fetch all data in parallel
         const [dataResponse, fieldMapResponse, heatmapResponse, alertsResponse] =
             await Promise.all([
@@ -377,10 +379,19 @@ async function loadResults() {
                 fetch('/api/alerts')
             ]);
 
+        console.log('Response statuses:', {
+            data: dataResponse.status,
+            fieldMap: fieldMapResponse.status,
+            heatmap: heatmapResponse.status,
+            alerts: alertsResponse.status
+        });
+
         const data = await dataResponse.json();
         const fieldMapData = await fieldMapResponse.json();
         const heatmapData = await heatmapResponse.json();
         const alertsData = await alertsResponse.json();
+
+        console.log('All data fetched successfully');
 
         // Update stats
         updateStats(data);
@@ -408,14 +419,19 @@ async function loadResults() {
         loadGNNGraph();
 
         // Hide progress and show export button and LLM section
+        console.log('Hiding progress section and showing results...');
         document.getElementById('progressSection').classList.add('d-none');
         document.getElementById('exportCSVBtn').style.display = 'block';
         document.getElementById('llmSection').classList.remove('d-none');
 
+        console.log('=== LOADRESULTS COMPLETED SUCCESSFULLY ===');
         resetButtons();
 
     } catch (error) {
-        console.error('Error loading results:', error);
+        console.error('=== ERROR IN LOADRESULTS ===');
+        console.error('Error details:', error);
+        console.error('Error message:', error.message);
+        console.error('Error stack:', error.stack);
         showError('Load Results Failed', error.message);
         resetButtons();
     }
