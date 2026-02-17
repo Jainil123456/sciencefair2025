@@ -1042,7 +1042,7 @@ def run_web_app(host='127.0.0.1', port=5000, debug=True):
     print("Press Ctrl+C to stop the server\n")
     
     try:
-        app.run(host=host, port=port, debug=debug, use_reloader=False, threaded=False)
+        app.run(host=host, port=port, debug=debug, use_reloader=False, threaded=True)
     except Exception as e:
         print(f"\n❌ Error starting Flask server: {e}")
         print("\nTroubleshooting:")
