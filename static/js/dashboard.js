@@ -161,6 +161,9 @@ async function loadCurrentSeed() {
 // ============================================
 
 async function handleTrainModel() {
+    console.log('=== TRAIN BUTTON CLICKED ===');
+    console.log('trainBtn element:', document.getElementById('trainBtn'));
+    console.log('progressSection element:', document.getElementById('progressSection'));
     await runAnalysis(false);
 }
 
@@ -169,13 +172,27 @@ async function handleLoadModel() {
 }
 
 async function runAnalysis(usePretrained) {
+    console.log('=== RUNANALYSIS FUNCTION STARTED ===');
+    console.log('usePretrained:', usePretrained);
+
     const trainBtn = document.getElementById('trainBtn');
     const loadBtn = document.getElementById('loadBtn');
+    const progressSection = document.getElementById('progressSection');
+
+    console.log('trainBtn:', trainBtn);
+    console.log('loadBtn:', loadBtn);
+    console.log('progressSection:', progressSection);
 
     // Disable buttons and show progress
-    trainBtn.disabled = true;
-    loadBtn.disabled = true;
-    document.getElementById('progressSection').classList.remove('d-none');
+    if (trainBtn) trainBtn.disabled = true;
+    if (loadBtn) loadBtn.disabled = true;
+    if (progressSection) {
+        console.log('Removing d-none from progressSection');
+        progressSection.classList.remove('d-none');
+        console.log('progressSection classList:', progressSection.classList);
+    } else {
+        console.error('ERROR: progressSection not found!');
+    }
     document.getElementById('trainingHistorySection').classList.add('d-none');
     document.getElementById('llmSection').classList.add('d-none');
     closeErrorAlert();
@@ -195,6 +212,12 @@ async function runAnalysis(usePretrained) {
             customSeed = seedValue ? parseInt(seedValue) : null;
         }
 
+        console.log('Calling /api/run_analysis with:', {
+            use_pretrained: usePretrained,
+            seed_mode: seedMode,
+            custom_seed: customSeed
+        });
+
         // Call API to start training and get job_id
         const response = await fetch('/api/run_analysis', {
             method: 'POST',
@@ -208,13 +231,19 @@ async function runAnalysis(usePretrained) {
             })
         });
 
+        console.log('API response status:', response.status);
+
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.error || 'Analysis failed');
         }
 
         const data = await response.json();
+        console.log('API response data:', data);
+
         currentJobId = data.job_id;
+        console.log('Job ID:', currentJobId);
+        console.log('Connecting to SSE stream...');
 
         // Connect to progress stream
         connectToProgressStream(currentJobId);
